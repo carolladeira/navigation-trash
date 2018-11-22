@@ -5,14 +5,20 @@
 #include <math.h>
 #include "Scene.h"
 #include "NavMesh.h"
+#include "DStar.h"
+
 
 
 #define TAM_CENARIO 500
 #define num_paredes 10
+#define TAMANHO_CELULA 10
+
 
 Scene *scene;
 Agente *agente;
 Wall *obstaculos;
+NavMesh *navMesh;
+DStar *dstar;
 
 void reshape(int, int);
 void display(void);
@@ -60,7 +66,8 @@ void display (void)
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-    scene->drawScene(agente,num_paredes, obstaculos);
+    scene->drawScene(navMesh, dstar, agente,num_paredes);
+    scene->drawMeshes(navMesh, num_paredes);
 
     glFlush ();
 }
@@ -76,10 +83,18 @@ void init()
     agente = new Agente();
     scene = new Scene();
     obstaculos = new Wall[num_paredes];
-    for(int i=0; i< num_paredes; i++)
-    {
-        obstaculos[i].geraPosicaoInicial(TAM_CENARIO, num_paredes);
-    }
+    navMesh = new NavMesh(TAM_CENARIO);
+//    for(int i=0; i< num_paredes; i++)
+//    {
+//        obstaculos[i].geraPosicaoInicial(TAM_CENARIO, num_paredes);
+//    }
+    navMesh->criaObjetos(num_paredes, TAM_CENARIO);
+    navMesh->atualizaObstacles(obstaculos, num_paredes);
+    //navMesh->criaNavMesh(obstaculos);
+    navMesh->criaGrid(obstaculos, TAM_CENARIO);
+    dstar = new DStar(navMesh, 50, agente);
+    dstar->AStar();
+
 
 
 }
