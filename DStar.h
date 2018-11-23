@@ -28,19 +28,25 @@ public:
 //} myobject;
 class DStar {
 public:
-    std::vector<Node> cameFrom ; //path;
+    std::vector<Node> totalPath ; //path;
     std::vector <Node> open; //node is currently open
     std::vector <Node> closed; //node is no longer open
     Agente pessoa;
 
     std::vector<std::vector <Node>> listaAdj;
+    std::vector<std::vector <Node>> cameFrom;
+
+    std::vector<Node> mapPath[QUANTIDADE_CELULA*QUANTIDADE_CELULA];
+
+   // Node mapPath[QUANTIDADE_CELULA*QUANTIDADE_CELULA];
+
 
     DStar(NavMesh *nav, int tamanho, Agente *agente);
     ~DStar() {};
 
     void ligaTodosNos();
 
-    std::vector<Node> reconstructPath(std::vector<Node> cameFrom, Node current);
+    std::vector<Node> reconstructPath(std::vector<Node> mathPath[], Node current);
     float calculaDistancia(Map atual, Map destino);
     Node menorFScore(std::vector<Node> open);
 

@@ -335,6 +335,8 @@ std::vector<Node> DStar::AStar() {
     open.push_back(node);
 
     std::vector<Node> vizinhos;
+    std::vector<Node> temp;
+
 
     float g =0;
     Node current;
@@ -343,7 +345,7 @@ std::vector<Node> DStar::AStar() {
         current = menorFScore(open);
         if (current.pontos.x == pessoa.end.x && current.pontos.y == pessoa.end.y) {
             ///encontrou caminho
-            return reconstructPath(cameFrom, current);
+            return reconstructPath(mapPath, current);
         }
 
 
@@ -373,24 +375,34 @@ std::vector<Node> DStar::AStar() {
                 open.push_back(vizinhos[i]);
             }
 
-            cameFrom.push_back(current);
+            //temp.push_back(current);
+///            cameFrom[vizinhos[i].id].push_back(current);
+            mapPath[vizinhos[i].id].push_back(current);
+            //mapPath[vizinhos[i].id] = current;
             vizinhos[i].g = g;
             vizinhos[i].h = calculaDistancia(vizinhos[i].pontos, pessoa.end);
             vizinhos[i].f = vizinhos[i].g + vizinhos[i].h;
-
-
         }
     }
 }
 
-std::vector<Node> DStar::reconstructPath(std::vector<Node> cameFrom, Node current) {
+std::vector<Node> DStar::reconstructPath(std::vector<Node> mathPath[], Node current) {
+    //std::vector<Node> totalPath;
+//    totalPath.push_back(current);
+//    for (int i = 0; i < cameFrom[current.id].size(); i++) {
+//        current = cameFrom[current.id][i];
+//        totalPath.push_back(current);
+//    }
+//    return totalPath;
     std::vector<Node> totalPath;
     totalPath.push_back(current);
-    for (int i = 0; i < cameFrom.size(); i++) {
-        current = cameFrom[i];
+    for (int i = 0; i < mathPath[current.id].size(); i++) {
+        current = mathPath[current.id][i];
         totalPath.push_back(current);
     }
     return totalPath;
+
+    //return mathPath[current.id];
 }
 
 float DStar::calculaDistancia(Map atual, Map destino) {

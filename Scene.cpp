@@ -149,11 +149,11 @@ void Scene::drawPath(DStar *dStar) {
     glColor3f (0.2, 1.0, 1.0);
     glBegin(GL_LINE_STRIP);
 
-    for(int j=0; j<dStar->cameFrom.size(); j++){
+    for(int j=0; j<dStar->totalPath.size(); j++){
 
        // glBegin(GL_POINTS);
 
-        glVertex2f (dStar->cameFrom[j].pontos.x, dStar->cameFrom[j].pontos.y);
+        glVertex2f (dStar->totalPath[j].pontos.x, dStar->totalPath[j].pontos.y);
 
        // std::cout <<  dStar->cameFrom[j].pontos.x << ","<<  dStar->cameFrom[j].pontos.y << std::endl;
 
@@ -164,10 +164,10 @@ void Scene::drawPath(DStar *dStar) {
 
     glColor3f (0.2, 0.0, 1.0);
 
-    for(int j=0; j<dStar->cameFrom.size(); j++){
+    for(int j=0; j<dStar->totalPath.size(); j++){
 
         glBegin(GL_POINTS);
-        glVertex2f (dStar->cameFrom[j].pontos.x, dStar->cameFrom[j].pontos.y);
+        glVertex2f (dStar->totalPath[j].pontos.x, dStar->totalPath[j].pontos.y);
         glEnd();
 
     }
