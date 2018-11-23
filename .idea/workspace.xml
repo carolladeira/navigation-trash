@@ -13,9 +13,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f9f0c39e-7f45-4e1f-bede-803bdd4b7bc2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DStar.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/DStar.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DStar.h" beforeDir="false" afterPath="$PROJECT_DIR$/DStar.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Scene.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Navigation_Mesh.dir/DStar.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Navigation_Mesh.dir/DStar.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Navigation_Mesh.dir/Scene.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Navigation_Mesh.dir/Scene.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Navigation_Mesh.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Navigation_Mesh.dir/main.cpp.o" afterDir="false" />
@@ -189,14 +186,14 @@
         <counts>
           <entry key="cpp" value="1815" />
           <entry key="h" value="208" />
-          <entry key="txt" value="45" />
+          <entry key="txt" value="85" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Doxygen file" value="2" />
           <entry key="ObjectiveC" value="2021" />
-          <entry key="PLAIN_TEXT" value="45" />
+          <entry key="PLAIN_TEXT" value="85" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -286,8 +283,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DStar.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="388" column="68" selection-start-line="388" selection-start-column="68" selection-end-line="388" selection-end-column="68" />
+            <state relative-caret-position="506">
+              <caret line="396" column="32" lean-forward="true" selection-start-line="396" selection-start-column="32" selection-end-line="396" selection-end-column="32" />
               <folding>
                 <element signature="e#38#56#0" expanded="true" />
                 <element signature="e#1413#1763#0" />
@@ -425,7 +422,7 @@
       <workItem from="1542891971508" duration="5528000" />
       <workItem from="1542910318365" duration="14519000" />
       <workItem from="1542970966963" duration="10014000" />
-      <workItem from="1542981407507" duration="9094000" />
+      <workItem from="1542981407507" duration="9336000" />
     </task>
     <task id="LOCAL-00001" summary="Gerando lista de adjacentes correta">
       <created>1542985941656</created>
@@ -434,11 +431,18 @@
       <option name="project" value="LOCAL" />
       <updated>1542985941656</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Ultima versao  - tem erros">
+      <created>1542998224181</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1542998224181</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="113837000" />
+    <option name="totallyTimeSpent" value="114079000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -453,13 +457,13 @@
     <frame x="47" y="-4" width="1319" height="772" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6754658" visible="true" weight="0.13275726" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6754658" visible="true" weight="0.13275726" />
       <window_info id="Structure" order="1" sideWeight="0.32453415" side_tool="true" weight="0.19336385" />
       <window_info id="Favorites" order="2" sideWeight="0.32360741" side_tool="true" weight="0.13118617" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.48311076" weight="0.26397514" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49960724" visible="true" weight="0.378882" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49960724" visible="true" weight="0.378882" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49803615" weight="0.32608697" />
@@ -483,7 +487,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Gerando lista de adjacentes correta" />
-    <option name="LAST_COMMIT_MESSAGE" value="Gerando lista de adjacentes correta" />
+    <MESSAGE value="Ultima versao  - tem erros" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ultima versao  - tem erros" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -491,6 +496,8 @@
         <watch expression="cameFrom" />
         <watch expression="open" />
         <watch expression="closed" />
+        <watch expression="mapPath" />
+        <watch expression="vizinhos[i].id" />
       </configuration>
     </watches-manager>
   </component>
@@ -639,8 +646,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DStar.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="388" column="68" selection-start-line="388" selection-start-column="68" selection-end-line="388" selection-end-column="68" />
+        <state relative-caret-position="506">
+          <caret line="396" column="32" lean-forward="true" selection-start-line="396" selection-start-column="32" selection-end-line="396" selection-end-column="32" />
           <folding>
             <element signature="e#38#56#0" expanded="true" />
             <element signature="e#1413#1763#0" />
