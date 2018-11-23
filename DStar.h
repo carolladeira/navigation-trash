@@ -36,7 +36,7 @@ public:
     std::vector<std::vector <Node>> listaAdj;
 
     DStar(NavMesh *nav, int tamanho, Agente *agente);
-    ~DStar();
+    ~DStar() {};
 
     void ligaTodosNos();
 
@@ -46,7 +46,9 @@ public:
 
     std::vector<Node> AStar();
     std::vector<Node> expand(Node current);
+    std::vector<Node> nosVizinhos(Node n, int tipo,  int tamanho);
     void imprime();
+
 };
 
 

@@ -8,9 +8,9 @@
 
 
 Node::Node() {
-//    this->g = 0;
-//    this->h = 0;
-//    this->f = 0;
+    this->g = INT_MAX;
+    this->h = 0;
+    this->f = 0;
 //    this->estado = 0;
 
 }
@@ -23,9 +23,24 @@ DStar::DStar(NavMesh *nav, int tamanho, Agente *agente) {
     int m = 0;
 
     std::vector<Node> temp;
+//
+//    int j = 0;
+//    Node nox;
+//    nox.pontos.x = 15;
+//    nox.pontos.y = 495;
+//    nox.id = m;
+//    if (nox.pontos.x == agente->start.x && nox.pontos.y == agente->start.y) {
+//        pessoa.start.id = m;
+//    }
+//    if (nox.pontos.x == agente->end.x && nox.pontos.y == agente->end.y) {
+//        pessoa.end.id = m;
+//    }
+//    temp = nosVizinhos(nox, 0, 10);
+//    listaAdj.push_back(temp);
+//    temp.clear();
+    //m++;
 
-    int j = 0;
-    for (int i = 0; i < 49; i++) {
+    for (int i = 0; i < tamanho; i++) {
         for (int j = 0; j < tamanho; j++) {
 
             Node nox;
@@ -38,17 +53,9 @@ DStar::DStar(NavMesh *nav, int tamanho, Agente *agente) {
             if (nox.pontos.x == agente->end.x && nox.pontos.y == agente->end.y) {
                 pessoa.end.id = m;
             }
-
-            temp.push_back(nox);
-            nox.pontos.x = ((i + 1) * 10) + 5;
-            nox.pontos.y = ((i + 1) * 10) + 5;
-            nox.id = m + 51;
-
-            temp.push_back(nox);
-
+            temp = nosVizinhos(nox, 0, 50);
             listaAdj.push_back(temp);
-            temp.pop_back();
-            temp.pop_back();
+            temp.clear();
             m++;
         }
     }
@@ -56,14 +63,18 @@ DStar::DStar(NavMesh *nav, int tamanho, Agente *agente) {
 }
 void DStar::imprime(){
     for (int i=0; i<listaAdj.size(); i++){
+        std::cout << ' ' << i;
+
 
         for(int j=0; j<listaAdj[i].size(); j++){
             std::cout << ' ' << listaAdj[i][j].id;
+            std::cout << "(" << listaAdj[i][j].pontos.x << ',' << listaAdj[i][j].pontos.y << ')' ;
         }
         std::cout  << " " << std::endl;
 
     }
 }
+
 
 void DStar::ligaTodosNos() {
 
@@ -87,57 +98,231 @@ void DStar::ligaTodosNos() {
 
 }
 
-/*std::vector<Node> DStar::nosVizinhos(Node n, int tipo){
+std::vector<Node> DStar::nosVizinhos(Node n, int tipo, int tamanho) {
+
 
     std::vector<Node> vizinhos;
-    if(tipo == 1)//Nos da esquerda
+    if (n.pontos.x == 5)//Nos da esquerda
     {
-        if(n.y == 5)//de baixo
+        if (n.pontos.y == 5)//de baixo
         {
             Node novo;
-            novo.x = n.x +10;
-            novo.y = n.y;
+            novo.pontos.x = n.pontos.x + 10; //direita
+            novo.pontos.y = n.pontos.y;
+            novo.id = n.id + tamanho;
             vizinhos.push_back(novo);
 
-        }else if(n.y== 45)// de cima
+            novo.pontos.x = n.pontos.x; //cima
+            novo.pontos.y = n.pontos.y + 10;
+            novo.id = n.id + 1;
+            vizinhos.push_back(novo);
+            return vizinhos;
+
+        } else if (n.pontos.y == 495)// de cima
         {
+            Node novo;
+            novo.pontos.x = n.pontos.x + 10; //direita
+            novo.pontos.y = n.pontos.y;
+            novo.id = n.id + tamanho;
+            vizinhos.push_back(novo);
+
+            novo.pontos.x = n.pontos.x; //baixo
+            novo.pontos.y = n.pontos.y - 10;
+            novo.id = n.id - 1;
+            vizinhos.push_back(novo);
+            return vizinhos;
+        } else {
+            Node novo;
+            novo.pontos.x = n.pontos.x + 10; //direita
+            novo.pontos.y = n.pontos.y;
+            novo.id = n.id + tamanho;
+            vizinhos.push_back(novo);
+
+            novo.pontos.x = n.pontos.x; //de cima
+            novo.pontos.y = n.pontos.y + 10;
+            novo.id = n.id + 1;
+            vizinhos.push_back(novo);
+
+            novo.pontos.x = n.pontos.x; //de baixo
+            novo.pontos.y = n.pontos.y - 10;
+            novo.id = n.id - 1;
+            vizinhos.push_back(novo);
+            return vizinhos;
 
         }
-    }else if (tipo == 2) //Nos de baixo
+    } else if (n.pontos.y == 5) //Nos de baixo
     {
-        if(n.x == 5)//direita
+        if (n.pontos.x == 5)//esquerda
         {
+            Node novo;
+            novo.pontos.x = n.pontos.x; //de cima
+            novo.pontos.y = n.pontos.y + 10;
+            novo.id = n.id + 1;
+            vizinhos.push_back(novo);
 
-        }else if(n.x== 45)// esquerda
+            novo.pontos.x = n.pontos.x + 10; //direita
+            novo.pontos.y = n.pontos.y;
+            novo.id = n.id + tamanho;
+            vizinhos.push_back(novo);
+            return vizinhos;
+
+        } else if (n.pontos.x == 495)// direita
         {
+            Node novo;
+            novo.pontos.x = n.pontos.x; //de cima
+            novo.pontos.y = n.pontos.y + 10;
+            novo.id = n.id + 1;
+            vizinhos.push_back(novo);
 
+            novo.pontos.x = n.pontos.x - 10; //esquerda
+            novo.pontos.y = n.pontos.y;
+            novo.id = n.id - tamanho;
+            vizinhos.push_back(novo);
+            return vizinhos;
+        } else {
+            Node novo;
+            novo.pontos.x = n.pontos.x + 10; //direita
+            novo.pontos.y = n.pontos.y;
+            novo.id = n.id + tamanho;
+            vizinhos.push_back(novo);
+
+            novo.pontos.x = n.pontos.x; //de cima
+            novo.pontos.y = n.pontos.y + 10;
+            novo.id = n.id + 1;
+            vizinhos.push_back(novo);
+
+            novo.pontos.x = n.pontos.x - 10; //esquerda
+            novo.pontos.y = n.pontos.y;
+            novo.id = n.id - tamanho;
+            vizinhos.push_back(novo);
+            return vizinhos;
         }
 
-    }else if (tipo == 3) //Nos de cima
+    } else if (n.pontos.y == 495) //Nos de cima
     {
-        if(n.x == 5)//direita
+        if (n.pontos.x == 5)//esquerda
         {
+            Node novo;
+            novo.pontos.x = n.pontos.x + 10; //direita
+            novo.pontos.y = n.pontos.y;
+            novo.id = n.id + tamanho;
+            vizinhos.push_back(novo);
 
-        }else if(n.x== 45)// esquerda
+            novo.pontos.x = n.pontos.x;  //baixo
+            novo.pontos.y = n.pontos.y - 10;
+            novo.id = n.id - 1;
+            vizinhos.push_back(novo);
+            return vizinhos;
+
+        } else if (n.pontos.x == 495)// direita
         {
+            Node novo;
+            novo.pontos.x = n.pontos.x - 10; //esquerda
+            novo.pontos.y = n.pontos.y;
+            novo.id = n.id - tamanho;
+            vizinhos.push_back(novo);
+
+            novo.pontos.x = n.pontos.x;  //baixo
+            novo.pontos.y = n.pontos.y - 10;
+            novo.id = n.id - 1;
+            vizinhos.push_back(novo);
+            return vizinhos;
+        }else{
+            Node novo;
+            novo.pontos.x = n.pontos.x + 10; //direita
+            novo.pontos.y = n.pontos.y;
+            novo.id = n.id + tamanho;
+            vizinhos.push_back(novo);
+
+            novo.pontos.x = n.pontos.x - 10; //esquerda
+            novo.pontos.y = n.pontos.y;
+            novo.id = n.id - tamanho;
+            vizinhos.push_back(novo);
+
+            novo.pontos.x = n.pontos.x;  //baixo
+            novo.pontos.y = n.pontos.y - 10;
+            novo.id = n.id - 1;
+            vizinhos.push_back(novo);
+
+            return vizinhos;
 
         }
 
-    }else if (tipo == 4) //Nos da direita
+
+    } else if (n.pontos.x == 495) //Nos da direita
     {
-        if(n.y == 5)//de baixo
+        if (n.pontos.y == 5)//de baixo
         {
+            Node novo;
+            novo.pontos.x = n.pontos.x - 10; //esquerda
+            novo.pontos.y = n.pontos.y;
+            novo.id = n.id - tamanho;
+            vizinhos.push_back(novo);
 
-        }else if(n.y== 45)// de cima
+            novo.pontos.x = n.pontos.x; //cima
+            novo.pontos.y = n.pontos.y + 10;
+            novo.id = n.id + 1;
+            vizinhos.push_back(novo);
+            return vizinhos;
+
+        } else if (n.pontos.y == 495)// de cima
         {
+            Node novo;
+            novo.pontos.x = n.pontos.x - 10; //esquerda
+            novo.pontos.y = n.pontos.y;
+            novo.id = n.id - tamanho;
+            vizinhos.push_back(novo);
 
+            novo.pontos.x = n.pontos.x;  //baixo
+            novo.pontos.y = n.pontos.y - 10;
+            novo.id = n.id - 1;
+            vizinhos.push_back(novo);
+            return vizinhos;
+        } else {
+            Node novo;
+            novo.pontos.x = n.pontos.x - 10; //esquerda
+            novo.pontos.y = n.pontos.y;
+            novo.id = n.id - tamanho;
+            vizinhos.push_back(novo);
+
+
+            novo.pontos.x = n.pontos.x; //cima
+            novo.pontos.y = n.pontos.y + 10;
+            novo.id = n.id + 1;
+            vizinhos.push_back(novo);
+
+            novo.pontos.x = n.pontos.x;  //baixo
+            novo.pontos.y = n.pontos.y - 10;
+            novo.id = n.id - 1;
+            vizinhos.push_back(novo);
+            return vizinhos;
         }
+    }else{
+        Node novo;
+        novo.pontos.x = n.pontos.x - 10; //esquerda
+        novo.pontos.y = n.pontos.y;
+        novo.id = n.id - tamanho;
+        vizinhos.push_back(novo);
+
+        novo.pontos.x = n.pontos.x + 10; //direita
+        novo.pontos.y = n.pontos.y;
+        novo.id = n.id + tamanho;
+        vizinhos.push_back(novo);
+
+        novo.pontos.x = n.pontos.x; //cima
+        novo.pontos.y = n.pontos.y + 10;
+        novo.id = n.id + 1;
+        vizinhos.push_back(novo);
+
+        novo.pontos.x = n.pontos.x;  //baixo
+        novo.pontos.y = n.pontos.y - 10;
+        novo.id = n.id - 1;
+        vizinhos.push_back(novo);
+        return vizinhos;
+
+
     }
 
-
-}*/
-
-DStar::~DStar() {
 }
 
 //entrada: start, goal
@@ -151,7 +336,7 @@ std::vector<Node> DStar::AStar() {
 
     std::vector<Node> vizinhos;
 
-    float g;
+    float g =0;
     Node current;
     while (!open.empty()) {
 
@@ -175,15 +360,17 @@ std::vector<Node> DStar::AStar() {
                 continue;
             }
 
+            // The distance from start to a neighbor
             g = current.g + calculaDistancia(current.pontos, vizinhos[i].pontos);
 
 
+            // if neighbor not in openSet,  Discover a new node
             if (std::find(closed.begin(), closed.end(), vizinhos[i]) != closed.end()) {
+                if (g >= vizinhos[i].g) {
+                    continue;
+                }
             } else {
                 open.push_back(vizinhos[i]);
-            }
-            if (g >= vizinhos[i].g) {
-                continue;
             }
 
             cameFrom.push_back(current);

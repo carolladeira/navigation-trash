@@ -143,15 +143,35 @@ void Scene::drawGraph(DStar *dStar) {
 
 void Scene::drawPath(DStar *dStar) {
 
-    glPointSize((GLfloat)5.0f);
+   // glPointSize((GLfloat)5.0f);
+    glLineWidth((GLfloat)2.0);
+
     glColor3f (0.2, 1.0, 1.0);
+    glBegin(GL_LINE_STRIP);
+
     for(int j=0; j<dStar->cameFrom.size(); j++){
 
-        //glBegin(GL_POINTS);
-       // glVertex2f (dStar->cameFrom[j].pontos.x, dStar->cameFrom[j].pontos.y);
-        std::cout <<  dStar->cameFrom[j].pontos.x << "-"<<  dStar->cameFrom[j].pontos.y << std::endl;
-       // glEnd();
+       // glBegin(GL_POINTS);
+
+        glVertex2f (dStar->cameFrom[j].pontos.x, dStar->cameFrom[j].pontos.y);
+
+       // std::cout <<  dStar->cameFrom[j].pontos.x << ","<<  dStar->cameFrom[j].pontos.y << std::endl;
 
     }
+    glEnd();
+
+    glPointSize((GLfloat)5.0f);
+
+    glColor3f (0.2, 0.0, 1.0);
+
+    for(int j=0; j<dStar->cameFrom.size(); j++){
+
+        glBegin(GL_POINTS);
+        glVertex2f (dStar->cameFrom[j].pontos.x, dStar->cameFrom[j].pontos.y);
+        glEnd();
+
+    }
+
+
 
 }
