@@ -1,4 +1,4 @@
-# Install script for directory: /home/nao/Área de Trabalho/Navigation Mesh
+# Install script for directory: /home/carol/Desktop/navigation-mesh
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/nao/Área de Trabalho/Navigation Mesh/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/carol/Desktop/navigation-mesh/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

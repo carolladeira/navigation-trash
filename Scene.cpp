@@ -14,6 +14,8 @@ void Scene::drawAgent(Agente *agente) {
     glColor3f(1.0,0.0,1.0);
     glBegin(GL_POINTS);
         glVertex2f(agente->start.x, agente->start.y);
+        std::cout <<  agente->start.x << "------"<<  agente->start.y << std::endl;
+
     glEnd();
     glColor3f(0.0,1.0,0.0);
     glBegin(GL_POINTS);
@@ -27,12 +29,8 @@ void Scene::drawAgent(Agente *agente) {
 void Scene::drawScene(NavMesh *navMesh, DStar *dstar, Agente * agente, int nWall ) {
     this->drawAgent(agente);
     this->drawObstacles(navMesh, nWall);
-    this->drawGraph(dstar);
+   // this->drawGraph(dstar);
     this->drawPath(dstar);
-
-
-
-
 
 }
 
@@ -74,7 +72,7 @@ void Scene::drawMeshes(NavMesh *navMesh, int nWall) {
         else if (navMesh->meshes[i]->tipo == 2)
             glColor3f (1.0, 0.0, 0.0);
         else if (navMesh->meshes[i]->tipo == 4)
-            glColor3f (0.8, 1.0, 0.5);
+            glColor3f (1.0, 1.0, 0.5);
         else
             glColor3f (0.0, 1.0, 1.0);
         if (navMesh->meshes[i]->pontos[3].x != -1) {
@@ -90,7 +88,6 @@ void Scene::drawMeshes(NavMesh *navMesh, int nWall) {
 
     }
 
-
     glLineWidth((GLfloat)1.0);
     for (int i=0; i<50; i++){
         x=i*10;
@@ -98,7 +95,7 @@ void Scene::drawMeshes(NavMesh *navMesh, int nWall) {
 
             y=j*10;
             if(navMesh->_meshes[i][j]==1){
-                glColor3f (0.0, 0.0, 1.0);
+                glColor3f (1.0, 0.0, 1.0);
             }else  glColor3f (0.2, 0.5, 0.0);
 
             glBegin(GL_LINE_LOOP);
@@ -114,54 +111,44 @@ void Scene::drawMeshes(NavMesh *navMesh, int nWall) {
 }
 
 void Scene::drawGraph(DStar *dStar) {
+    int m=0;
 
     glLineWidth((GLfloat)1.0);
     glColor3f (0.0, 0.0, 1.0);
-    for (int i=0; i<dStar->listaAdj.size(); i++){
+    for (int i = 0; i < 50; i++) {
+        for (int j = 0; j < 50; j++) {
+          //  std::cout <<  (i * 10) + 5 << ","<<  (j * 10) + 5 << std::endl;
 
-        for(int j=0; j<dStar->listaAdj[i].size(); j++){
-            glBegin(GL_LINE_LOOP);
-//            glVertex2f (x, y);
-//            glVertex2f (x +10, y);
-//            glVertex2f (x+10, y+10);
-//            glVertex2f (x,y+10 );
-            glEnd();
+            for(int t=0; t<dStar->listaAdj[m].size(); t++){
+                glBegin(GL_LINES);
+                glVertex2f ((i * 10) + 5, (j * 10) + 5);
 
+                glVertex2f (dStar->listaAdj[m][t].pontos.x, dStar->listaAdj[m][t].pontos.y);
+              //  std::cout <<  dStar->listaAdj[m][t].pontos.x << ","<<  dStar->listaAdj[m][t].pontos.y << " - ";
+
+                glEnd();
+            }
+          //  std::cout<< ""<< std::endl;
+
+            m++;
         }
     }
-//    glPointSize((GLfloat)5.0f);
-//    glColor3f (0.2, 0.0, 0.0);
-//        for(int j=0; j<2500; j++){
-//
-//            glBegin(GL_POINTS);
-//            glVertex2f (dStar->no[j].x, dStar->no[j].y);
-//            glEnd();
-//
-//        }
-
 }
 
 void Scene::drawPath(DStar *dStar) {
 
-   // glPointSize((GLfloat)5.0f);
+    glPointSize((GLfloat)5.0f);
     glLineWidth((GLfloat)2.0);
 
     glColor3f (0.2, 1.0, 1.0);
     glBegin(GL_LINE_STRIP);
 
     for(int j=0; j<dStar->totalPath.size(); j++){
-
-       // glBegin(GL_POINTS);
-
         glVertex2f (dStar->totalPath[j].pontos.x, dStar->totalPath[j].pontos.y);
-
-       // std::cout <<  dStar->cameFrom[j].pontos.x << ","<<  dStar->cameFrom[j].pontos.y << std::endl;
-
+     //   std::cout <<  dStar->totalPath[j].id << std::endl;
+       // std::cout <<  dStar->totalPath[j].pontos.x << ","<<  dStar->totalPath[j].pontos.y << std::endl;
     }
     glEnd();
-
-    glPointSize((GLfloat)5.0f);
-
     glColor3f (0.2, 0.0, 1.0);
 
     for(int j=0; j<dStar->totalPath.size(); j++){

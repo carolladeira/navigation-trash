@@ -31,6 +31,8 @@ public:
     std::vector<Node> totalPath ; //path;
     std::vector <Node> open; //node is currently open
     std::vector <Node> closed; //node is no longer open
+    std::vector <Node> obstacles; //node is no longer open
+
     Agente pessoa;
 
     std::vector<std::vector <Node>> listaAdj;
@@ -54,6 +56,7 @@ public:
     std::vector<Node> expand(Node current);
     std::vector<Node> nosVizinhos(Node n, int tipo,  int tamanho);
     void imprime();
+    void imprimiPath();
 
 };
 

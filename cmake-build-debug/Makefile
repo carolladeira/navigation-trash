@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/nao/Downloads/clion-2018.2.5/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /home/carol/Downloads/CLion-2018.2.5/clion-2018.2.5/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /home/nao/Downloads/clion-2018.2.5/bin/cmake/linux/bin/cmake -E remove -f
+RM = /home/carol/Downloads/CLion-2018.2.5/clion-2018.2.5/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/nao/Área de Trabalho/Navigation Mesh"
+CMAKE_SOURCE_DIR = /home/carol/Desktop/navigation-mesh
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/nao/Área de Trabalho/Navigation Mesh/cmake-build-debug"
+CMAKE_BINARY_DIR = /home/carol/Desktop/navigation-mesh/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = "/home/nao/Área de Trabalho/Navigation Mesh/cmake-build-debu
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/nao/Downloads/clion-2018.2.5/bin/cmake/linux/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/home/carol/Downloads/CLion-2018.2.5/clion-2018.2.5/bin/cmake/linux/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/nao/Downloads/clion-2018.2.5/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/home/carol/Downloads/CLion-2018.2.5/clion-2018.2.5/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/nao/Área de Trabalho/Navigation Mesh/cmake-build-debug/CMakeFiles" "/home/nao/Área de Trabalho/Navigation Mesh/cmake-build-debug/CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/carol/Desktop/navigation-mesh/cmake-build-debug/CMakeFiles /home/carol/Desktop/navigation-mesh/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/nao/Área de Trabalho/Navigation Mesh/cmake-build-debug/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/carol/Desktop/navigation-mesh/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Navigation_Mesh
+# Target rules for targets named navigation_mesh
 
 # Build rule for target.
-Navigation_Mesh: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Navigation_Mesh
-.PHONY : Navigation_Mesh
+navigation_mesh: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 navigation_mesh
+.PHONY : navigation_mesh
 
 # fast build rule for target.
-Navigation_Mesh/fast:
-	$(MAKE) -f CMakeFiles/Navigation_Mesh.dir/build.make CMakeFiles/Navigation_Mesh.dir/build
-.PHONY : Navigation_Mesh/fast
+navigation_mesh/fast:
+	$(MAKE) -f CMakeFiles/navigation_mesh.dir/build.make CMakeFiles/navigation_mesh.dir/build
+.PHONY : navigation_mesh/fast
 
 DStar.o: DStar.cpp.o
 
@@ -129,7 +129,7 @@ DStar.o: DStar.cpp.o
 
 # target to build an object file
 DStar.cpp.o:
-	$(MAKE) -f CMakeFiles/Navigation_Mesh.dir/build.make CMakeFiles/Navigation_Mesh.dir/DStar.cpp.o
+	$(MAKE) -f CMakeFiles/navigation_mesh.dir/build.make CMakeFiles/navigation_mesh.dir/DStar.cpp.o
 .PHONY : DStar.cpp.o
 
 DStar.i: DStar.cpp.i
@@ -138,7 +138,7 @@ DStar.i: DStar.cpp.i
 
 # target to preprocess a source file
 DStar.cpp.i:
-	$(MAKE) -f CMakeFiles/Navigation_Mesh.dir/build.make CMakeFiles/Navigation_Mesh.dir/DStar.cpp.i
+	$(MAKE) -f CMakeFiles/navigation_mesh.dir/build.make CMakeFiles/navigation_mesh.dir/DStar.cpp.i
 .PHONY : DStar.cpp.i
 
 DStar.s: DStar.cpp.s
@@ -147,7 +147,7 @@ DStar.s: DStar.cpp.s
 
 # target to generate assembly for a file
 DStar.cpp.s:
-	$(MAKE) -f CMakeFiles/Navigation_Mesh.dir/build.make CMakeFiles/Navigation_Mesh.dir/DStar.cpp.s
+	$(MAKE) -f CMakeFiles/navigation_mesh.dir/build.make CMakeFiles/navigation_mesh.dir/DStar.cpp.s
 .PHONY : DStar.cpp.s
 
 NavMesh.o: NavMesh.cpp.o
@@ -156,7 +156,7 @@ NavMesh.o: NavMesh.cpp.o
 
 # target to build an object file
 NavMesh.cpp.o:
-	$(MAKE) -f CMakeFiles/Navigation_Mesh.dir/build.make CMakeFiles/Navigation_Mesh.dir/NavMesh.cpp.o
+	$(MAKE) -f CMakeFiles/navigation_mesh.dir/build.make CMakeFiles/navigation_mesh.dir/NavMesh.cpp.o
 .PHONY : NavMesh.cpp.o
 
 NavMesh.i: NavMesh.cpp.i
@@ -165,7 +165,7 @@ NavMesh.i: NavMesh.cpp.i
 
 # target to preprocess a source file
 NavMesh.cpp.i:
-	$(MAKE) -f CMakeFiles/Navigation_Mesh.dir/build.make CMakeFiles/Navigation_Mesh.dir/NavMesh.cpp.i
+	$(MAKE) -f CMakeFiles/navigation_mesh.dir/build.make CMakeFiles/navigation_mesh.dir/NavMesh.cpp.i
 .PHONY : NavMesh.cpp.i
 
 NavMesh.s: NavMesh.cpp.s
@@ -174,7 +174,7 @@ NavMesh.s: NavMesh.cpp.s
 
 # target to generate assembly for a file
 NavMesh.cpp.s:
-	$(MAKE) -f CMakeFiles/Navigation_Mesh.dir/build.make CMakeFiles/Navigation_Mesh.dir/NavMesh.cpp.s
+	$(MAKE) -f CMakeFiles/navigation_mesh.dir/build.make CMakeFiles/navigation_mesh.dir/NavMesh.cpp.s
 .PHONY : NavMesh.cpp.s
 
 Scene.o: Scene.cpp.o
@@ -183,7 +183,7 @@ Scene.o: Scene.cpp.o
 
 # target to build an object file
 Scene.cpp.o:
-	$(MAKE) -f CMakeFiles/Navigation_Mesh.dir/build.make CMakeFiles/Navigation_Mesh.dir/Scene.cpp.o
+	$(MAKE) -f CMakeFiles/navigation_mesh.dir/build.make CMakeFiles/navigation_mesh.dir/Scene.cpp.o
 .PHONY : Scene.cpp.o
 
 Scene.i: Scene.cpp.i
@@ -192,7 +192,7 @@ Scene.i: Scene.cpp.i
 
 # target to preprocess a source file
 Scene.cpp.i:
-	$(MAKE) -f CMakeFiles/Navigation_Mesh.dir/build.make CMakeFiles/Navigation_Mesh.dir/Scene.cpp.i
+	$(MAKE) -f CMakeFiles/navigation_mesh.dir/build.make CMakeFiles/navigation_mesh.dir/Scene.cpp.i
 .PHONY : Scene.cpp.i
 
 Scene.s: Scene.cpp.s
@@ -201,7 +201,7 @@ Scene.s: Scene.cpp.s
 
 # target to generate assembly for a file
 Scene.cpp.s:
-	$(MAKE) -f CMakeFiles/Navigation_Mesh.dir/build.make CMakeFiles/Navigation_Mesh.dir/Scene.cpp.s
+	$(MAKE) -f CMakeFiles/navigation_mesh.dir/build.make CMakeFiles/navigation_mesh.dir/Scene.cpp.s
 .PHONY : Scene.cpp.s
 
 main.o: main.cpp.o
@@ -210,7 +210,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) -f CMakeFiles/Navigation_Mesh.dir/build.make CMakeFiles/Navigation_Mesh.dir/main.cpp.o
+	$(MAKE) -f CMakeFiles/navigation_mesh.dir/build.make CMakeFiles/navigation_mesh.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -219,7 +219,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) -f CMakeFiles/Navigation_Mesh.dir/build.make CMakeFiles/Navigation_Mesh.dir/main.cpp.i
+	$(MAKE) -f CMakeFiles/navigation_mesh.dir/build.make CMakeFiles/navigation_mesh.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -228,7 +228,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) -f CMakeFiles/Navigation_Mesh.dir/build.make CMakeFiles/Navigation_Mesh.dir/main.cpp.s
+	$(MAKE) -f CMakeFiles/navigation_mesh.dir/build.make CMakeFiles/navigation_mesh.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -239,7 +239,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... Navigation_Mesh"
+	@echo "... navigation_mesh"
 	@echo "... DStar.o"
 	@echo "... DStar.i"
 	@echo "... DStar.s"

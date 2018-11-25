@@ -11,17 +11,11 @@ using namespace std;
 
 //-------------------------Agente------------------------------------
 Agente::Agente() {
-//    this->atual.x =rand() % (int)tam_cenario;
-//    this->atual.y =rand() % (int)tam_cenario;
-//
-//    this->end.x = rand() % (int)tam_cenario;
-//    this->end.y = rand() % (int)tam_cenario;
+    this->start.x =rand() % (int)500;
+    this->start.y =rand() % (int)500;
 
-    this->start.x =15;
-    this->start.y =15;
-
-    this->end.x = 355;
-    this->end.y = 355;
+    this->end.x = rand() % (int)500;
+    this->end.y = rand() % (int)500;
 
 }
 
@@ -178,7 +172,27 @@ void NavMesh::criaGrid(Wall *obstacles, float tam_cenario) {
 void NavMesh::criaObjetos(int num_paredes, int tam_cenario) {
     objects= new Wall[num_paredes];
 
-    for(int i=0; i < num_paredes;  i++){
+    this->objects[0].pontos[0].x = 12;		            this->objects[0].pontos[0].y = 12;
+    this->objects[0].pontos[1].x = 22;           this->objects[0].pontos[1].y = 12;
+    this->objects[0].pontos[2].x = 22;	        this->objects[0].pontos[2].y = 22;
+    this->objects[0].pontos[3].x = 12;		            this->objects[0].pontos[3].y = 22;
+
+    int ax = (int)objects[0].pontos[0].x / tamanho;     int ay =(int) objects[0].pontos[0].y / tamanho;
+    int bx = (int)objects[0].pontos[1].x / tamanho;     int by = (int)objects[0].pontos[1].y / tamanho;
+    int cx = (int)objects[0].pontos[2].x / tamanho;     int cy = (int)objects[0].pontos[2].y / tamanho;
+    int dx = (int)objects[0].pontos[3].x / tamanho;     int dy = (int)objects[0].pontos[3].y / tamanho;
+
+    std::cout  << " " << ax << " " << ay << std::endl;
+
+    for (int _x = ax;_x<=cx; _x++){
+        for(int _y=ay;_y<=cy;_y++){
+            std::cout  << " " << _x << " " << _y << std::endl;
+
+            _meshes[_x][_y] = 1;
+            cells[_x][_y].cost = INT_MAX;
+        }
+    }
+    for(int i=1; i < num_paredes;  i++){
         float x = rand() % (int)tam_cenario -1 + 1;
         float y = rand() % (int)tam_cenario -1 + 1;
         float width= rand() % MAX_LARGURA_PAREDE + MIN_LARGURA_PAREDE;
@@ -194,8 +208,14 @@ void NavMesh::criaObjetos(int num_paredes, int tam_cenario) {
         int cx = (int)objects[i].pontos[2].x / tamanho;     int cy = (int)objects[i].pontos[2].y / tamanho;
         int dx = (int)objects[i].pontos[3].x / tamanho;     int dy = (int)objects[i].pontos[3].y / tamanho;
 
+        std::cout  << " " << this->objects[i].pontos[0].x  << " " << y << std::endl;
+
+    //    std::cout  << " " << ax << " " << ay << std::endl;
+
         for (int _x = ax;_x<=cx; _x++){
             for(int _y=ay;_y<=cy;_y++){
+             //   std::cout  << " " << _x << " " << _y << std::endl;
+
                 _meshes[_x][_y] = 1;
                 cells[_x][_y].cost = INT_MAX;
             }

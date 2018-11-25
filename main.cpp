@@ -26,6 +26,8 @@ void idle ();
 void init();
 
 int main(int argc, char** argv) {
+   // std:: cout << "   "<<__cplusplus ;
+
     srand (time(NULL));
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
