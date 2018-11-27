@@ -6,6 +6,9 @@
 #include <iostream>
 #include <algorithm>    // std::find, min
 #include <stdlib.h>
+#include <GL/glut.h>
+
+//#define DEBUG
 
 
 Node::Node() {
@@ -14,6 +17,7 @@ Node::Node() {
     this->f = INT_MAX;
     this->rhs = INT_MAX;
     this->estado = NULL;
+    this->ocupado = false;
 }
 
 Node::~Node() {
@@ -34,25 +38,37 @@ DStar::DStar(NavMesh *nav, int tamanho, Agente *agente) {
             nox.id = m;
             if(nav->_meshes[i][j] == 1){
                 obstacles.push_back(nox);
+                custo[nox.id].ocupado = true;
                 //continue;
             }
             if (((agente->start.x - 5) <= nox.pontos.x == true) && (((agente->start.x + 5) >= nox.pontos.x == true))){
                 if (((agente->start.y - 5) <= nox.pontos.y == true) && (((agente->start.y + 5) >= nox.pontos.y == true))){
-                    pessoa.start.id = m;
+                   // pessoa.start.id = m;
                     this->s_start.id = m;
                     this->s_start.pontos = agente->start;
-                   // std::cout  << " " << m << std::endl;
-                   // std::cout  << " " << agente->start.x << " " << agente->start.y << std::endl;
-                   // std::cout  << " " << nox.pontos.x << " " << nox.pontos.y<< std::endl;
+#ifdef DEBUG
+    std::cout<<std::endl;
+    std::cout<<"--------------D Star Lite-----------------------" <<std::endl;
+    std::cout  << "START | m: " << m << std::endl;
+    std::cout  << "agente: " << agente->start.x << " " << agente->start.y << " - ";
+    std::cout  << "nox: " << nox.pontos.x << " " << nox.pontos.y<< std::endl;
+#endif
+
                 }
             }
           //  if ((nox.pontos.x <= agente->start.x + 10|| agente->start.x >= nox.pontos.x) && (nox.pontos.y <= agente->start.y || agente->start.y >= nox.pontos.y)) {
 
             if (((agente->end.x - 5) <= nox.pontos.x == true) && (((agente->end.x + 5) >= nox.pontos.x == true))){
                 if (((agente->end.y - 5) <= nox.pontos.y == true) && (((agente->end.y + 5) >= nox.pontos.y == true))){
-                    pessoa.end.id = m;
+                 //   pessoa.end.id = m;
                     this->s_end.id = m;
                     this->s_end.pontos = agente->end;
+#ifdef DEBUG
+    std::cout<<std::endl;
+    std::cout  << "END | m: " << m << std::endl;
+    std::cout  << "agente: " << agente->start.x << " " << agente->start.y << " - ";
+    std::cout  << "nox: " << nox.pontos.x << " " << nox.pontos.y<< std::endl;
+#endif
                 }
             }
 
@@ -63,6 +79,11 @@ DStar::DStar(NavMesh *nav, int tamanho, Agente *agente) {
         }
     }
     //imprime();
+#ifdef DEBUG
+    std::cout<<this->s_start.id<<" " ;
+    std::cout<<this->s_end.id<<" " ;
+
+#endif
 }
 
 void DStar::imprime(){
@@ -96,10 +117,10 @@ std::vector<Node> DStar::nosVizinhos(Node n, int tipo, int tamanho) {
             novo.id = n.id + 1;
             vizinhos.push_back(novo);
 
-//            novo.pontos.x = n.pontos.x + 10; //diagonal direita-cima
-//            novo.pontos.y = n.pontos.y + 10;
-//            novo.id = n.id + 1 + tamanho;
-//            vizinhos.push_back(novo);
+            novo.pontos.x = n.pontos.x + 10; //diagonal direita-cima
+            novo.pontos.y = n.pontos.y + 10;
+            novo.id = n.id + 1 + tamanho;
+            vizinhos.push_back(novo);
             return vizinhos;
 
         } else if (n.pontos.y == 495)// de cima
@@ -115,10 +136,10 @@ std::vector<Node> DStar::nosVizinhos(Node n, int tipo, int tamanho) {
             novo.id = n.id - 1;
             vizinhos.push_back(novo);
 
-//            novo.pontos.x = n.pontos.x + 10; //diagonal direita-baixo
-//            novo.pontos.y = n.pontos.y - 10;
-//            novo.id = n.id - 1 + tamanho;
-//            vizinhos.push_back(novo);
+            novo.pontos.x = n.pontos.x + 10; //diagonal direita-baixo
+            novo.pontos.y = n.pontos.y - 10;
+            novo.id = n.id - 1 + tamanho;
+            vizinhos.push_back(novo);
             return vizinhos;
         } else {
             Node novo;
@@ -136,16 +157,16 @@ std::vector<Node> DStar::nosVizinhos(Node n, int tipo, int tamanho) {
             novo.pontos.y = n.pontos.y - 10;
             novo.id = n.id - 1;
             vizinhos.push_back(novo);
-//
-//            novo.pontos.x = n.pontos.x + 10; //diagonal direita-cima
-//            novo.pontos.y = n.pontos.y + 10;
-//            novo.id = n.id + 1 + tamanho;
-//            vizinhos.push_back(novo);
-//
-//            novo.pontos.x = n.pontos.x + 10; //diagonal direita-baixo
-//            novo.pontos.y = n.pontos.y - 10;
-//            novo.id = n.id - 1 + tamanho;
-//            vizinhos.push_back(novo);
+
+            novo.pontos.x = n.pontos.x + 10; //diagonal direita-cima
+            novo.pontos.y = n.pontos.y + 10;
+            novo.id = n.id + 1 + tamanho;
+            vizinhos.push_back(novo);
+
+            novo.pontos.x = n.pontos.x + 10; //diagonal direita-baixo
+            novo.pontos.y = n.pontos.y - 10;
+            novo.id = n.id - 1 + tamanho;
+            vizinhos.push_back(novo);
             return vizinhos;
 
         }
@@ -165,10 +186,10 @@ std::vector<Node> DStar::nosVizinhos(Node n, int tipo, int tamanho) {
             novo.id = n.id + tamanho;
             vizinhos.push_back(novo);
 
-//            novo.pontos.x = n.pontos.x + 10; //diagonal direita-cima
-//            novo.pontos.y = n.pontos.y + 10;
-//            novo.id = n.id + 1 + tamanho;
-//            vizinhos.push_back(novo);
+            novo.pontos.x = n.pontos.x + 10; //diagonal direita-cima
+            novo.pontos.y = n.pontos.y + 10;
+            novo.id = n.id + 1 + tamanho;
+            vizinhos.push_back(novo);
             return vizinhos;
 
         } else if (n.pontos.x == 495)// direita
@@ -184,10 +205,10 @@ std::vector<Node> DStar::nosVizinhos(Node n, int tipo, int tamanho) {
             novo.id = n.id - tamanho;
             vizinhos.push_back(novo);
 
-//            novo.pontos.x = n.pontos.x - 10; //diagonal esquerda-cima
-//            novo.pontos.y = n.pontos.y + 10;
-//            novo.id = n.id + 1 - tamanho;
-//            vizinhos.push_back(novo);
+            novo.pontos.x = n.pontos.x - 10; //diagonal esquerda-cima
+            novo.pontos.y = n.pontos.y + 10;
+            novo.id = n.id + 1 - tamanho;
+            vizinhos.push_back(novo);
             return vizinhos;
         } else {
             Node novo;
@@ -206,15 +227,15 @@ std::vector<Node> DStar::nosVizinhos(Node n, int tipo, int tamanho) {
             novo.id = n.id - tamanho;
             vizinhos.push_back(novo);
 
-//            novo.pontos.x = n.pontos.x + 10; //diagonal direita-cima
-//            novo.pontos.y = n.pontos.y + 10;
-//            novo.id = n.id + 1 + tamanho;
-//            vizinhos.push_back(novo);
-//
-//            novo.pontos.x = n.pontos.x - 10; //diagonal esquerda-cima
-//            novo.pontos.y = n.pontos.y + 10;
-//            novo.id = n.id + 1 - tamanho;
-//            vizinhos.push_back(novo);
+            novo.pontos.x = n.pontos.x + 10; //diagonal direita-cima
+            novo.pontos.y = n.pontos.y + 10;
+            novo.id = n.id + 1 + tamanho;
+            vizinhos.push_back(novo);
+
+            novo.pontos.x = n.pontos.x - 10; //diagonal esquerda-cima
+            novo.pontos.y = n.pontos.y + 10;
+            novo.id = n.id + 1 - tamanho;
+            vizinhos.push_back(novo);
             return vizinhos;
         }
 ///===========================================================================================================================
@@ -274,15 +295,15 @@ std::vector<Node> DStar::nosVizinhos(Node n, int tipo, int tamanho) {
             novo.id = n.id - 1;
             vizinhos.push_back(novo);
 
-//            novo.pontos.x = n.pontos.x + 10; //diagonal direita-baixo
-//            novo.pontos.y = n.pontos.y - 10;
-//            novo.id = n.id - 1 + tamanho;
-//            vizinhos.push_back(novo);
-//
-//            novo.pontos.x = n.pontos.x - 10; //diagonal esquerda-baixo
-//            novo.pontos.y = n.pontos.y - 10;
-//            novo.id = n.id - 1 - tamanho;
-//            vizinhos.push_back(novo);
+            novo.pontos.x = n.pontos.x + 10; //diagonal direita-baixo
+            novo.pontos.y = n.pontos.y - 10;
+            novo.id = n.id - 1 + tamanho;
+            vizinhos.push_back(novo);
+
+            novo.pontos.x = n.pontos.x - 10; //diagonal esquerda-baixo
+            novo.pontos.y = n.pontos.y - 10;
+            novo.id = n.id - 1 - tamanho;
+            vizinhos.push_back(novo);
             return vizinhos;
 
         }
@@ -303,10 +324,10 @@ std::vector<Node> DStar::nosVizinhos(Node n, int tipo, int tamanho) {
             novo.id = n.id + 1;
             vizinhos.push_back(novo);
 
-//            novo.pontos.x = n.pontos.x - 10; //diagonal esquerda-cima
-//            novo.pontos.y = n.pontos.y + 10;
-//            novo.id = n.id + 1 - tamanho;
-//            vizinhos.push_back(novo);
+            novo.pontos.x = n.pontos.x - 10; //diagonal esquerda-cima
+            novo.pontos.y = n.pontos.y + 10;
+            novo.id = n.id + 1 - tamanho;
+            vizinhos.push_back(novo);
             return vizinhos;
 
         } else if (n.pontos.y == 495)// de cima
@@ -322,10 +343,10 @@ std::vector<Node> DStar::nosVizinhos(Node n, int tipo, int tamanho) {
             novo.id = n.id - 1;
             vizinhos.push_back(novo);
 
-//            novo.pontos.x = n.pontos.x - 10; //diagonal esquerda-baixo
-//            novo.pontos.y = n.pontos.y - 10;
-//            novo.id = n.id - 1 - tamanho;
-//            vizinhos.push_back(novo);
+            novo.pontos.x = n.pontos.x - 10; //diagonal esquerda-baixo
+            novo.pontos.y = n.pontos.y - 10;
+            novo.id = n.id - 1 - tamanho;
+            vizinhos.push_back(novo);
             return vizinhos;
         } else {
             Node novo;
@@ -344,15 +365,15 @@ std::vector<Node> DStar::nosVizinhos(Node n, int tipo, int tamanho) {
             novo.id = n.id - 1;
             vizinhos.push_back(novo);
 
-//            novo.pontos.x = n.pontos.x - 10; //diagonal esquerda-baixo
-//            novo.pontos.y = n.pontos.y - 10;
-//            novo.id = n.id - 1 - tamanho;
-//            vizinhos.push_back(novo);
-//
-//            novo.pontos.x = n.pontos.x - 10; //diagonal esquerda-cima
-//            novo.pontos.y = n.pontos.y + 10;
-//            novo.id = n.id + 1 - tamanho;
-//            vizinhos.push_back(novo);
+            novo.pontos.x = n.pontos.x - 10; //diagonal esquerda-baixo
+            novo.pontos.y = n.pontos.y - 10;
+            novo.id = n.id - 1 - tamanho;
+            vizinhos.push_back(novo);
+
+            novo.pontos.x = n.pontos.x - 10; //diagonal esquerda-cima
+            novo.pontos.y = n.pontos.y + 10;
+            novo.id = n.id + 1 - tamanho;
+            vizinhos.push_back(novo);
             return vizinhos;
         }
 ///===================================================================================
@@ -378,25 +399,25 @@ std::vector<Node> DStar::nosVizinhos(Node n, int tipo, int tamanho) {
         novo.id = n.id - 1;
         vizinhos.push_back(novo);
 
-//        novo.pontos.x = n.pontos.x + 10; //diagonal direita-cima
-//        novo.pontos.y = n.pontos.y + 10;
-//        novo.id = n.id + 1 + tamanho;
-//        vizinhos.push_back(novo);
-//
-//        novo.pontos.x = n.pontos.x + 10; //diagonal direita-baixo
-//        novo.pontos.y = n.pontos.y - 10;
-//        novo.id = n.id - 1 + tamanho;
-//        vizinhos.push_back(novo);
-///
-//        novo.pontos.x = n.pontos.x - 10; //diagonal esquerda-baixo
-//        novo.pontos.y = n.pontos.y - 10;
-//        novo.id = n.id - 1 - tamanho;
-//        vizinhos.push_back(novo);
-//
-//        novo.pontos.x = n.pontos.x - 10; //diagonal esquerda-cima
-//        novo.pontos.y = n.pontos.y + 10;
-//        novo.id = n.id + 1 - tamanho;
-//        vizinhos.push_back(novo);
+        novo.pontos.x = n.pontos.x + 10; //diagonal direita-cima
+        novo.pontos.y = n.pontos.y + 10;
+        novo.id = n.id + 1 + tamanho;
+        vizinhos.push_back(novo);
+
+        novo.pontos.x = n.pontos.x + 10; //diagonal direita-baixo
+        novo.pontos.y = n.pontos.y - 10;
+        novo.id = n.id - 1 + tamanho;
+        vizinhos.push_back(novo);
+
+        novo.pontos.x = n.pontos.x - 10; //diagonal esquerda-baixo
+        novo.pontos.y = n.pontos.y - 10;
+        novo.id = n.id - 1 - tamanho;
+        vizinhos.push_back(novo);
+
+        novo.pontos.x = n.pontos.x - 10; //diagonal esquerda-cima
+        novo.pontos.y = n.pontos.y + 10;
+        novo.id = n.id + 1 - tamanho;
+        vizinhos.push_back(novo);
         return vizinhos;
 
 
@@ -407,9 +428,9 @@ std::vector<Node> DStar::nosVizinhos(Node n, int tipo, int tamanho) {
 std::vector<Node> DStar::AStar() {
     Node node;
     node.g = 0;
-    node.pontos = pessoa.start;
-    node.id = pessoa.start.id;
-    node.f = calculaDistancia(pessoa.start, pessoa.end);
+    node.pontos = s_start.pontos;
+    node.id = s_start.id;
+    node.f = calculaDistancia(s_start, s_end);
     open.push_back(node);
 
     std::vector<Node> vizinhos;
@@ -421,7 +442,7 @@ std::vector<Node> DStar::AStar() {
     while (!open.empty()) {
 
         current = menorFScore(this->open);
-        if (current.id == pessoa.end.id) {
+        if (current.id == s_end.id) {
             ///encontrou caminho
             return reconstructPath(mapPath, current);
         }
@@ -441,7 +462,7 @@ std::vector<Node> DStar::AStar() {
             }
 
             // The distance from start to a neighbor
-            g = current.g + calculaDistancia(current.pontos, vizinhos[i].pontos);
+            g = current.g + calculaDistancia(current, vizinhos[i]);
 
 
             // if neighbor not in openSet,  Discover a new node
@@ -451,7 +472,7 @@ std::vector<Node> DStar::AStar() {
                 }
             } else {
                 vizinhos[i].g = g;
-                vizinhos[i].h = calculaDistancia(vizinhos[i].pontos, pessoa.end);
+                vizinhos[i].h = calculaDistancia(vizinhos[i], s_end);
                 vizinhos[i].f = vizinhos[i].g + vizinhos[i].h;
                 open.push_back(vizinhos[i]);
             }
@@ -461,7 +482,7 @@ std::vector<Node> DStar::AStar() {
             mapPath[vizinhos[i].id].push_back(current);
             //mapPath[vizinhos[i].id] = current;
             vizinhos[i].g = g;
-            vizinhos[i].h = calculaDistancia(vizinhos[i].pontos, pessoa.end);
+            vizinhos[i].h = calculaDistancia(vizinhos[i], s_end);
             vizinhos[i].f = vizinhos[i].g + vizinhos[i].h;
         }
     }
@@ -494,7 +515,7 @@ std::vector<Node> DStar::reconstructPath(std::vector<Node> mathPath[], Node curr
     }*/
     Node n;
 
-    while(n.id != pessoa.start.id) {
+    while(n.id != s_start.id) {
         temp = mathPath[current.id];
         n = temp[0];
         current = temp[0];
@@ -518,15 +539,20 @@ void DStar:: imprimiPath(){
     }
 }
 
-float DStar::calculaDistancia(Map atual, Map destino) {
+float DStar::calculaDistancia(Node atual, Node destino) {
 
-    float dx, dy;
-    dx = abs(atual.x - destino.x);
-    dy = abs(atual.y - destino.y);
+    if(custo[atual.id].ocupado == true || custo[destino.id].ocupado == true){
+        return INT_MAX;
+    }else{
+        float dx, dy;
+        dx = abs(atual.pontos.x - destino.pontos.x);
+        dy = abs(atual.pontos.y - destino.pontos.y);
 
-    float dist = sqrt(dx * dx + dy * dy);
+        float dist = sqrt(dx * dx + dy * dy);
 
-    return dist;
+        return dist;
+    }
+
 
 }
 
@@ -552,16 +578,15 @@ std::vector<Node> DStar::expand(Node current) {
     return temp;
 }
 
-void DStar:: DStarLite(){
+void DStar:: DStarLite(Agente *agente){
     int km=0;
     float c_old;
 
-    Node s_end;
-    s_end.pontos = pessoa.end;
-    s_end.id = pessoa.end.id;
+    //Node s_end;
+    s_end.pontos = s_end.pontos;
+    s_end.id = s_end.id;
     s_end.rhs = 0;
-    s_end.id = pessoa.end.id;
-    s_end.h = calculaDistancia(pessoa.start, pessoa.end);
+    s_end.h = calculaDistancia(s_start, s_end);
     Pair m;
     m.first = s_end.h;
     m.second = 0;
@@ -573,8 +598,8 @@ void DStar:: DStarLite(){
     std::vector<Node> temp;
 
     Node s_last, s_inicio;
-    s_inicio.pontos = pessoa.start;
-    s_inicio.id = pessoa.start.id;
+    s_inicio.pontos = s_start.pontos;
+    s_inicio.id = s_start.id;
     s_last = s_inicio;
     Node u, v;
     custo[s_end.id].rhs = 0;
@@ -584,17 +609,23 @@ void DStar:: DStarLite(){
        // if(n.rhs == INT_MAX) there is no known path
        s_inicio = min_succ(s_inicio);
        this->closed.push_back(s_inicio);
-       km = km + calculaDistancia(s_last.pontos,s_start.pontos);
+       agente->atual=s_inicio.pontos;
+//        glPointSize((GLfloat)5.0f);
+//        glColor3f(1.0,0.0,0.0);
+//        glBegin(GL_POINTS);
+//        glVertex2f(agente->atual.x, agente->atual.y);
+//        glEnd();
+       km = km + calculaDistancia(s_last,s_inicio);
        s_last = s_inicio;
        u = s_last;
        for (int i = 0; i < listaAdj[s_last.id].size(); i++) ///para cada vizinho do atual
        {
             v = listaAdj[s_last.id][i];
-            c_old = calculaDistancia(u.pontos,v.pontos);
+            c_old = calculaDistancia(u,v);
             //update the edgecost c(u,v);
-            if(c_old > calculaDistancia(u.pontos,v.pontos)){
+            if(c_old > calculaDistancia(u,v)){
                 if(u.id != s_end.id) {
-                    listaAdj[s_last.id][i].rhs = std::min(getRhs(u), calculaDistancia(u.pontos, v.pontos) + getG(v));
+                    listaAdj[s_last.id][i].rhs = std::min(getRhs(u), calculaDistancia(u, v) + getG(v));
                     custo[u.id].rhs = listaAdj[s_last.id][i].rhs;
                     custo[u.id].g = getG(u);
                     custo[u.id].estado=1;
@@ -643,8 +674,8 @@ void DStar::computeShortestPath(float km){
                 s = listaAdj[u.id][i];
                 if(s.id != s_end.id){
                     //custo[u.id].g = calculaDistancia(u.pontos, s_end.pontos);
-                    s.rhs = std::min(custo[s.id].rhs, calculaDistancia(s.pontos,u.pontos) + custo[u.id].g);
-                    custo[s.id].rhs = std::min(custo[s.id].rhs, calculaDistancia(s.pontos,u.pontos) + custo[u.id].g);
+                    s.rhs = std::min(custo[s.id].rhs, calculaDistancia(s,u) + custo[u.id].g);
+                    custo[s.id].rhs = std::min(custo[s.id].rhs, calculaDistancia(s,u) + custo[u.id].g);
                     custo[s.id].g = getG(s);
                     custo[s.id].estado=1;
                 }
@@ -656,7 +687,7 @@ void DStar::computeShortestPath(float km){
             custo[u.id].estado=1;
             for(int i = 0; i < listaAdj[u.id].size(); i++){
                 s = listaAdj[u.id][i];
-                if(getRhs(s)== calculaDistancia(s.pontos, u.pontos) + g_old){
+                if(getRhs(s)== calculaDistancia(s, u) + g_old){
                     if(s.id != this->s_end.id){
                         custo[s.id].rhs = min_succ(s).rhs;
                         custo[s.id].g = getG(s);
@@ -694,7 +725,7 @@ void DStar::updateVertex(Node u, float km){
 Pair DStar::calculateKey(Node s, float km){
 
     Pair k;
-    float h = calculaDistancia(s.pontos, this->s_start.pontos);
+    float h = calculaDistancia(s, this->s_start);
     float val = std::min(getG(s), getRhs(s));
     k.first = val + h + km;
     k.second = val;
@@ -721,7 +752,7 @@ Node DStar::min_succ(Node u)
     for(int i=0; i< this->listaAdj[u.id].size(); i++){
         s = this->listaAdj[u.id][i];
     //    c = calculaDistancia(u.pontos, s.pontos) + s.g;
-        dist = calculaDistancia(u.pontos, s.pontos);
+        dist = calculaDistancia(u, s);
         g1 = getG(s);
         c= dist + g1;
        // c = calculaDistancia(u.pontos, s.pontos) + getG(s);
@@ -749,21 +780,21 @@ Node DStar::ordena(std::vector<Node> open) {
 
 }
 bool DStar::compara(Pair u, Pair s){
-    if (u.first < s.first || u.first == s.first && u.second < s.second){
+    if (u.first < s.first || (u.first == s.first && u.second < s.second)){
         return true; //u < s
-    }else{
-        return false;
     }
+    return false;
+
 }
 
 float DStar::getG(Node u){
     if(this->custo[u.id].estado==NULL){
-        return calculaDistancia(u.pontos, s_end.pontos);
+        return calculaDistancia(u, s_end);
     }else return custo[u.id].g;
 }
 float DStar::getRhs(Node u){
     if(u.id == s_end.id) return 0;
     if(this->custo[u.id].estado==NULL){
-        return calculaDistancia(u.pontos, s_end.pontos);
+        return calculaDistancia(u, s_end);
     }else return custo[u.id].rhs;
 }

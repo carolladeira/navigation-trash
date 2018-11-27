@@ -15,9 +15,10 @@ public:
 
 class Node{
 public:
+    int id;
+    bool ocupado;
     float g, h, f, rhs;
     Pair key;
-    int id;
     Map pontos;
     int estado;
     //   char estado; ///-1 = nó fechado, 0 = nó não explorado, 1 = nó aberto
@@ -62,12 +63,12 @@ public:
     std::vector<Node> AStar();
     std::vector<Node> expand(Node current);
     std::vector<Node> reconstructPath(std::vector<Node> mathPath[], Node current);
-    float calculaDistancia(Map atual, Map destino);
+    float calculaDistancia(Node atual, Node destino);
     Node menorFScore(std::vector<Node> open);
     void imprimiPath();
 
     ///D Star Lite
-    void DStarLite();
+    void DStarLite(Agente *agente);
     void updateVertex(Node u, float km);
     Pair calculateKey(Node s, float km);
     int findI(Node u);

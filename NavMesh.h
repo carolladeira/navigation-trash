@@ -11,8 +11,8 @@
 #include <bits/stdc++.h>
 
 
-#define MIN_LARGURA_PAREDE 7
-#define MAX_LARGURA_PAREDE 20
+#define MIN_LARGURA_PAREDE 3
+#define MAX_LARGURA_PAREDE 30
 #define LARGURA_MESH_COVER 5
 #define QUANTIDADE_CELULA 50
 #define TAMANHO_CELULA 10
@@ -26,7 +26,6 @@ public:
     float x;
     float y;
     int id;
-
 
 
 };

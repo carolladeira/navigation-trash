@@ -6,39 +6,48 @@
 #include "Scene.h"
 
 #include <fstream>
+//#define DEBUG
 
 using namespace std;
 
-void Scene::drawAgent(Agente *agente) {
-    glPointSize((GLfloat)12.0f);
-    glColor3f(1.0,0.0,1.0);
-    glBegin(GL_POINTS);
-        glVertex2f(agente->start.x, agente->start.y);
-      //  std::cout <<  agente->start.x << "------"<<  agente->start.y << std::endl;
-
-    glEnd();
-    glColor3f(0.0,1.0,0.0);
-    glBegin(GL_POINTS);
-    glVertex2f(agente->end.x, agente->end.y);
-    glEnd();
-
-
-
-}
-
 void Scene::drawScene(NavMesh *navMesh, DStar *dstar, Agente * agente, int nWall ) {
+    // this->drawGraph(dstar);
     this->drawAgent(agente);
     this->drawObstacles(navMesh, nWall);
-   // this->drawGraph(dstar);
+    this->drawMeshes(navMesh, nWall);
     this->drawPath(dstar);
     this->drawPathDStar(dstar);
 
 
 }
+///desenha agente
+void Scene::drawAgent(Agente *agente) {
+    glPointSize((GLfloat)12.0f);
+    glColor3f(0.0,0.0,1.0); //blue
+    glBegin(GL_POINTS);
+        glVertex2f(agente->start.x, agente->start.y);
+    glEnd();
 
+    glColor3f(0.0,1.0,0.0); // green
+    glBegin(GL_POINTS);
+        glVertex2f(agente->end.x, agente->end.y);
+    glEnd();
+
+    glColor3f(1.0,0.0,0.0); //red
+    glBegin(GL_POINTS);
+        glVertex2f(agente->atual.x, agente->atual.y);
+    glEnd();
+
+}
+
+///desenha obstaculos
 void Scene::drawObstacles(NavMesh *navMesh, int nWall){
     glColor3f (0.0, 0.0, 0.0);
     glLineWidth((GLfloat)3.5);
+#ifdef DEBUG
+    std::cout<<"------------------------------------" <<std::endl;
+    std::cout<<"Numero de obstacuclos: " <<nWall<< std::endl;
+#endif
     for (int i = 0; i < nWall; i++) {
         glBegin(GL_QUADS);
             glBegin(GL_QUADS);
@@ -47,20 +56,17 @@ void Scene::drawObstacles(NavMesh *navMesh, int nWall){
             glVertex2f(navMesh->objects[i].pontos[2].x, navMesh->objects[i].pontos[2].y);
             glVertex2f(navMesh->objects[i].pontos[3].x, navMesh->objects[i].pontos[3].y);
             glEnd();
-        glEnd();
 
+#ifdef DEBUG
+        std::cout <<navMesh->objects[i].pontos[0].x << ","<<navMesh->objects[i].pontos[0].y<< " --- ";
+        std::cout <<navMesh->objects[i].pontos[1].x << ","<<navMesh->objects[i].pontos[1].y<< " --- ";
+        std::cout <<navMesh->objects[i].pontos[2].x << ","<<navMesh->objects[i].pontos[2].y<< " --- ";
+        std::cout <<navMesh->objects[i].pontos[3].x << ","<<navMesh->objects[i].pontos[3].y<<std::endl;
+#endif
+        glEnd();
 
     }
 }
-
-Scene::Scene() {
-
-}
-
-Scene::~Scene() {
-
-}
-
 
 void Scene::drawMeshes(NavMesh *navMesh, int nWall) {
     int x,y;
@@ -97,7 +103,7 @@ void Scene::drawMeshes(NavMesh *navMesh, int nWall) {
 
             y=j*10;
             if(navMesh->_meshes[i][j]==1){
-                glColor3f (1.0, 0.0, 1.0);
+                glColor3f (1.0, 0.0, 0.0);
             }else  glColor3f (0.2, 0.5, 0.0);
 
             glBegin(GL_LINE_LOOP);
@@ -147,8 +153,11 @@ void Scene::drawPath(DStar *dStar) {
 
     for(int j=0; j<dStar->totalPath.size(); j++){
         glVertex2f (dStar->totalPath[j].pontos.x, dStar->totalPath[j].pontos.y);
-     //   std::cout <<  dStar->totalPath[j].id << std::endl;
-       // std::cout <<  dStar->totalPath[j].pontos.x << ","<<  dStar->totalPath[j].pontos.y << std::endl;
+        #ifdef DEBUG
+           std::cout <<  dStar->totalPath[j].id << std::endl;
+           std::cout <<  dStar->totalPath[j].pontos.x << ","<<  dStar->totalPath[j].pontos.y << std::endl;
+        #endif
+
     }
     glEnd();
     glColor3f (0.2, 0.0, 1.0);
@@ -158,14 +167,14 @@ void Scene::drawPath(DStar *dStar) {
         glBegin(GL_POINTS);
         glVertex2f (dStar->totalPath[j].pontos.x, dStar->totalPath[j].pontos.y);
         glEnd();
-
     }
-
-
-
 }
 void Scene::drawPathDStar(DStar *dstar)
 {
+#ifdef DEBUG
+    std::cout<<std::endl;
+    std::cout<<"--------------Draw Path DStar Lite-----------------------" <<std::endl;
+#endif
     glLineWidth((GLfloat)2.0);
 
     glColor3f (0.2, 1.0, 1.0);
@@ -173,8 +182,12 @@ void Scene::drawPathDStar(DStar *dstar)
 
     for(int j=0; j<dstar->closed.size(); j++){
         glVertex2f (dstar->closed[j].pontos.x, dstar->closed[j].pontos.y);
-        std::cout <<  dstar->closed[j].id << std::endl;
-// std::cout <<  dStar->totalPath[j].pontos.x << ","<<  dStar->totalPath[j].pontos.y << std::endl;
+        #ifdef DEBUG
+            std::cout<<dstar->closed[j].id<<" " ;
+        #endif
     }
+#ifdef DEBUG
+    std::cout<<std::endl;
+#endif
     glEnd();
 }

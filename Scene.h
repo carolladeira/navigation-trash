@@ -11,8 +11,10 @@
 
 class Scene {
 public:
-    Scene();
-    ~Scene();
+    Scene() {};
+
+    ~Scene() {};
+
 
     void drawScene(NavMesh *navMesh, DStar *dstar, Agente * agente, int nWall);
     void drawObstacles(NavMesh *navMesh, int nWall);

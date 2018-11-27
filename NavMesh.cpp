@@ -8,6 +8,8 @@
 #include <iostream>
 
 using namespace std;
+#define DEBUG
+
 
 //-------------------------Agente------------------------------------
 Agente::Agente() {
@@ -209,13 +211,20 @@ void NavMesh::criaObjetos(int num_paredes, int tam_cenario) {
         this->objects[i].pontos[1].x = x + width;           this->objects[i].pontos[1].y = y;
         this->objects[i].pontos[2].x = x + width;	        this->objects[i].pontos[2].y = y + height;
         this->objects[i].pontos[3].x = x;		            this->objects[i].pontos[3].y = y + height;
+//
+//#ifdef DEBUG
+//        std::cout <<this->objects[i].pontos[0].x << ","<<this->objects[i].pontos[0].y<< " --- ";
+//        std::cout <<this->objects[i].pontos[1].x << ","<<this->objects[i].pontos[1].y<< " --- ";
+//        std::cout <<this->objects[i].pontos[2].x << ","<<this->objects[i].pontos[2].y<< " --- ";
+//        std::cout <<this->objects[i].pontos[3].x << ","<<this->objects[i].pontos[3].y<<std::endl;
+//#endif
 
         int ax = (int)objects[i].pontos[0].x / tamanho;     int ay =(int) objects[i].pontos[0].y / tamanho;
         int bx = (int)objects[i].pontos[1].x / tamanho;     int by = (int)objects[i].pontos[1].y / tamanho;
         int cx = (int)objects[i].pontos[2].x / tamanho;     int cy = (int)objects[i].pontos[2].y / tamanho;
         int dx = (int)objects[i].pontos[3].x / tamanho;     int dy = (int)objects[i].pontos[3].y / tamanho;
 
-        std::cout  << " " << this->objects[i].pontos[0].x  << " " << y << std::endl;
+      //  std::cout  << " " << this->objects[i].pontos[0].x  << " " << y << std::endl;
 
     //    std::cout  << " " << ax << " " << ay << std::endl;
 
@@ -234,10 +243,10 @@ void NavMesh::criaObjetos(int num_paredes, int tam_cenario) {
 }
 
 void NavMesh::atualizaPosicao() {
-    this->objects[0].pontos[0].x = this->objects[0].pontos[0].x + 0.01;		            this->objects[0].pontos[0].y = this->objects[0].pontos[0].y + 0.01;
-    this->objects[0].pontos[1].x = this->objects[0].pontos[1].x + 0.01;                    this->objects[0].pontos[1].y = this->objects[0].pontos[1].y+ 0.01;
-    this->objects[0].pontos[2].x = this->objects[0].pontos[2].x+ 0.01;	                this->objects[0].pontos[2].y = this->objects[0].pontos[2].y+ 0.01;
-    this->objects[0].pontos[3].x = this->objects[0].pontos[3].x+ 0.01;		            this->objects[0].pontos[3].y = this->objects[0].pontos[3].y+ 0.01;
+    this->objects[0].pontos[0].x = this->objects[0].pontos[0].x + 0.101;		            this->objects[0].pontos[0].y = this->objects[0].pontos[0].y + 0.101;
+    this->objects[0].pontos[1].x = this->objects[0].pontos[1].x + 0.101;                    this->objects[0].pontos[1].y = this->objects[0].pontos[1].y+ 0.101;
+    this->objects[0].pontos[2].x = this->objects[0].pontos[2].x+ 0.101;	                this->objects[0].pontos[2].y = this->objects[0].pontos[2].y+ 0.101;
+    this->objects[0].pontos[3].x = this->objects[0].pontos[3].x+ 0.101;		            this->objects[0].pontos[3].y = this->objects[0].pontos[3].y+ 0.101;
 
     int ax = (int)objects[0].pontos[0].x / tamanho;     int ay =(int) objects[0].pontos[0].y / tamanho;
     int bx = (int)objects[0].pontos[1].x / tamanho;     int by = (int)objects[0].pontos[1].y / tamanho;
@@ -245,7 +254,10 @@ void NavMesh::atualizaPosicao() {
     int dx = (int)objects[0].pontos[3].x / tamanho;     int dy = (int)objects[0].pontos[3].y / tamanho;
 
 
-    //    std::cout  << " " << ax << " " << ay << std::endl;
+#ifdef DEBUG
+    std::cout  << " " << objects[0].pontos[0].x << " " << ay << std::endl;
+
+#endif
 
     for (int _x = ax;_x<=cx; _x++){
         for(int _y=ay;_y<=cy;_y++){

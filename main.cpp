@@ -10,8 +10,10 @@
 
 
 #define TAM_CENARIO 500
-#define num_paredes 10
+#define num_paredes 5
 #define TAMANHO_CELULA 10
+
+//#define DEBUG
 
 
 Scene *scene;
@@ -67,18 +69,28 @@ void display (void)
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    navMesh->atualizaObstacles(obstaculos, num_paredes);
+ //   navMesh->atualizaObstacles(obstaculos, num_paredes);
     scene->drawScene(navMesh, dstar, agente,num_paredes);
-    scene->drawMeshes(navMesh, num_paredes);
+    scene->drawMeshes(navMesh,num_paredes);
+
+
+#ifdef DEBUG
+        std::cout<<agente->atual.x << ","<<  agente->atual.y << std::endl;
+    #endif
+
+
 
     glFlush ();
 }
 
 void idle()
 {
+   // dstar->DStarLite(agente);
 
-   // navMesh->atualizaPosicao();
-  //  glutPostRedisplay();
+    navMesh->atualizaPosicao();
+   // scene->drawMeshes(navMesh,num_paredes);
+
+    glutPostRedisplay();
 
 
 }
@@ -92,16 +104,9 @@ void init()
     navMesh = new NavMesh(TAM_CENARIO);
     navMesh->criaObjetos(num_paredes, TAM_CENARIO);
     dstar = new DStar(navMesh, 50, agente);
-   // dstar->AStar();
-    dstar->DStarLite();
-    //obstaculos = new Wall[num_paredes];
-//    for(int i=0; i< num_paredes; i++)
-//    {
-//        obstaculos[i].geraPosicaoInicial(TAM_CENARIO, num_paredes);
-//    }
-    //navMesh->criaNavMesh(obstaculos);
+    dstar->DStarLite(agente);
 
 
-
+//    dstar->AStar();
 
 }

@@ -220,16 +220,17 @@
         <counts>
           <entry key="project.closed" value="1" />
           <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.31" value="1" />
           <entry key="project.open.time.34" value="1" />
           <entry key="project.open.time.35" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="cmath" value="2" />
           <entry key="cpp" value="1" />
-          <entry key="h" value="8" />
+          <entry key="h" value="9" />
           <entry key="navigation_mesh (disassembly)" value="5" />
           <entry key="py" value="1" />
           <entry key="txt" value="1" />
@@ -239,22 +240,23 @@
         <counts>
           <entry key="CMakeLists.txt" value="1" />
           <entry key="Disassembly" value="5" />
-          <entry key="ObjectiveC" value="11" />
+          <entry key="ObjectiveC" value="12" />
           <entry key="Python" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cpp" value="6055" />
-          <entry key="h" value="441" />
-          <entry key="txt" value="4" />
+          <entry key="cpp" value="6910" />
+          <entry key="h" value="484" />
+          <entry key="txt" value="68" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CMakeLists.txt" value="4" />
           <entry key="Doxygen file" value="4" />
-          <entry key="ObjectiveC" value="6492" />
+          <entry key="ObjectiveC" value="7390" />
+          <entry key="PLAIN_TEXT" value="64" />
         </counts>
       </usages-collector>
     </session>
@@ -267,26 +269,24 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NavMesh.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-192">
-              <caret line="195" column="11" selection-start-line="195" selection-start-column="11" selection-end-line="195" selection-end-column="11" />
+            <state relative-caret-position="403">
+              <caret line="223" column="102" lean-forward="true" selection-start-line="223" selection-start-column="102" selection-end-line="223" selection-end-column="102" />
               <folding>
                 <element signature="e#53#73#0" expanded="true" />
-                <element signature="e#1147#1672#0" />
-                <element signature="e#1673#4345#0" />
-                <element signature="e#4468#4541#0" />
-                <element signature="e#4904#5397#0" />
+                <element signature="e#1775#4447#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="44" selection-start-line="44" selection-end-line="44" />
+            <state relative-caret-position="424">
+              <caret line="106" column="4" selection-start-line="106" selection-start-column="4" selection-end-line="106" selection-end-column="4" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
+                <element signature="e#1675#1741#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -295,8 +295,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DStar.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="15" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
+            <state relative-caret-position="435">
+              <caret line="65" selection-start-line="65" selection-end-line="65" />
               <folding>
                 <element signature="e#103#123#0" expanded="true" />
               </folding>
@@ -307,8 +307,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NavMesh.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1073">
-              <caret line="98" column="27" selection-start-line="98" selection-start-column="27" selection-end-line="98" selection-end-column="27" />
+            <state relative-caret-position="135">
+              <caret line="27" column="11" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
               <folding>
                 <element signature="e#94#111#0" expanded="true" />
               </folding>
@@ -319,10 +319,16 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scene.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="491">
-              <caret line="174" column="60" selection-start-line="174" selection-start-column="60" selection-end-line="174" selection-end-column="60" />
+            <state relative-caret-position="120">
+              <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
               <folding>
                 <element signature="e#39#59#0" expanded="true" />
+                <element signature="e#1074#1198#0" expanded="true" />
+                <element signature="e#1705#2109#0" expanded="true" />
+                <element signature="e#4851#5008#0" expanded="true" />
+                <element signature="e#5320#5429#0" expanded="true" />
+                <element signature="e#5684#5721#0" expanded="true" />
+                <element signature="e#5760#5781#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -331,35 +337,28 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scene.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="22" column="16" lean-forward="true" selection-start-line="22" selection-end-line="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/DStar.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="569" column="28" selection-start-line="569" selection-start-column="28" selection-end-line="569" selection-end-column="28" />
-              <folding>
-                <element signature="e#38#56#0" expanded="true" />
-                <element signature="e#1883#2236#0" />
-                <element signature="e#2238#13455#0" />
-                <element signature="e#13457#15523#0" />
-                <element signature="e#16998#17414#0" />
-                <element signature="e#17416#17561#0" />
-                <element signature="e#21946#22362#0" />
-              </folding>
+            <state relative-caret-position="210">
+              <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file:///usr/include/c++/7/bits/std_abs.h">
+        <entry file="file://$PROJECT_DIR$/DStar.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="74" selection-start-line="74" selection-end-line="74" />
+            <state relative-caret-position="-630">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+              <folding>
+                <element signature="e#38#56#0" expanded="true" />
+                <element signature="e#1273#1586#0" expanded="true" />
+                <element signature="e#2180#2412#0" expanded="true" />
+                <element signature="e#2628#2699#0" expanded="true" />
+                <element signature="e#2508#13884#0" />
+                <element signature="e#13886#15929#0" />
+                <element signature="e#15931#17045#0" />
+                <element signature="e#17418#17834#0" />
+                <element signature="e#17836#17981#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -380,13 +379,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/NavMesh.h" />
-        <option value="$PROJECT_DIR$/main.cpp" />
-        <option value="$PROJECT_DIR$/DStar.h" />
-        <option value="$PROJECT_DIR$/NavMesh.cpp" />
         <option value="$PROJECT_DIR$/Scene.h" />
-        <option value="$PROJECT_DIR$/Scene.cpp" />
+        <option value="$PROJECT_DIR$/DStar.h" />
+        <option value="$PROJECT_DIR$/NavMesh.h" />
         <option value="$PROJECT_DIR$/DStar.cpp" />
+        <option value="$PROJECT_DIR$/Scene.cpp" />
+        <option value="$PROJECT_DIR$/NavMesh.cpp" />
+        <option value="$PROJECT_DIR$/main.cpp" />
       </list>
     </option>
   </component>
@@ -423,6 +422,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -434,13 +434,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.12.3/CMakeDetermineCompilerABI_CXX.bin" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="dynamic.analysis.tools.valgrind" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -510,7 +509,8 @@
       <workItem from="1542981407507" duration="9336000" />
       <workItem from="1543091550069" duration="24538000" />
       <workItem from="1543171341173" duration="596000" />
-      <workItem from="1543232321802" duration="40604000" />
+      <workItem from="1543232321802" duration="41764000" />
+      <workItem from="1543323232887" duration="11156000" />
     </task>
     <task id="LOCAL-00001" summary="Gerando lista de adjacentes correta">
       <created>1542985941656</created>
@@ -526,11 +526,18 @@
       <option name="project" value="LOCAL" />
       <updated>1542998224181</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="DStar Lite implementado - sem evitar obstaculos">
+      <created>1543288403377</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1543288403378</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="179817000" />
+    <option name="totallyTimeSpent" value="192133000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -545,6 +552,28 @@
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6754658" weight="0.2739347" />
+      <window_info id="Structure" order="1" sideWeight="0.32453415" side_tool="true" weight="0.19336385" />
+      <window_info id="Favorites" order="2" sideWeight="0.32360741" side_tool="true" weight="0.13118617" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.48311076" visible="true" weight="0.28756756" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49960724" weight="0.31243244" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49803615" weight="0.32540542" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49943247" weight="0.32756758" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5003928" side_tool="true" weight="0.39751554" />
+      <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="CMake" order="11" sideWeight="0.4972506" weight="0.34054053" />
+      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.60251373" weight="0.42486486" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout>
+    <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6754658" weight="0.2744881" />
       <window_info id="Structure" order="1" sideWeight="0.32453415" side_tool="true" weight="0.19336385" />
       <window_info id="Favorites" order="2" sideWeight="0.32360741" side_tool="true" weight="0.13118617" />
@@ -565,7 +594,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
-    </layout>
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -576,40 +605,33 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Gerando lista de adjacentes correta" />
     <MESSAGE value="Ultima versao  - tem erros" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ultima versao  - tem erros" />
+    <MESSAGE value="DStar Lite implementado - sem evitar obstaculos" />
+    <option name="LAST_COMMIT_MESSAGE" value="DStar Lite implementado - sem evitar obstaculos" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/DStar.cpp</url>
-          <line>584</line>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
-        <watch expression="open" />
-        <watch expression="s_inicio.id" />
-        <watch expression="u.id" />
-        <watch expression="c_old" />
-        <watch expression="calculaDistancia(u.pontos,listaAdj[u.id][i].pontos)" />
-        <watch expression="u.rhs " />
-        <watch expression="listaAdj[s_last.id][i].g" />
-        <watch expression="closed" />
-        <watch expression="u" />
-        <watch expression="c" />
-        <watch expression="dist" />
-        <watch expression="g1" />
-        <watch expression="final.id" />
-        <watch expression="s.id" />
-        <watch expression="custo[u.id]" />
+        <watch expression="agente-&gt;start.x" />
+        <watch expression="agente-&gt;start.y" />
+        <watch expression="nox.pontos.x " />
+        <watch expression="nox.pontos.y" />
+        <watch expression="m" />
+        <watch expression="s_start" />
+        <watch expression="atual" />
+        <watch expression="destino" />
+        <watch expression="custo" />
+        <watch expression="s_end" />
+        <watch expression="s_end.id" />
       </configuration>
     </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
+      <expression>
+        <expression-string>dstar-&gt;closed</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>final</expression-string>
         <language-id>ObjectiveC</language-id>
@@ -701,52 +723,48 @@
     </entry>
     <entry file="file:///usr/include/c++/7/bits/std_abs.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
+        <state relative-caret-position="1110">
           <caret line="74" selection-start-line="74" selection-end-line="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scene.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DStar.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="15" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
+        <state relative-caret-position="435">
+          <caret line="65" selection-start-line="65" selection-end-line="65" />
           <folding>
             <element signature="e#103#123#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scene.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="22" column="16" lean-forward="true" selection-start-line="22" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Scene.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
-          <caret line="174" column="60" selection-start-line="174" selection-start-column="60" selection-end-line="174" selection-end-column="60" />
+        <state relative-caret-position="120">
+          <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
           <folding>
             <element signature="e#39#59#0" expanded="true" />
+            <element signature="e#1074#1198#0" expanded="true" />
+            <element signature="e#1705#2109#0" expanded="true" />
+            <element signature="e#4851#5008#0" expanded="true" />
+            <element signature="e#5320#5429#0" expanded="true" />
+            <element signature="e#5684#5721#0" expanded="true" />
+            <element signature="e#5760#5781#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/NavMesh.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1073">
-          <caret line="98" column="27" selection-start-line="98" selection-start-column="27" selection-end-line="98" selection-end-column="27" />
+        <state relative-caret-position="135">
+          <caret line="27" column="11" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
           <folding>
             <element signature="e#94#111#0" expanded="true" />
           </folding>
@@ -755,30 +773,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/NavMesh.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-192">
-          <caret line="195" column="11" selection-start-line="195" selection-start-column="11" selection-end-line="195" selection-end-column="11" />
+        <state relative-caret-position="403">
+          <caret line="223" column="102" lean-forward="true" selection-start-line="223" selection-start-column="102" selection-end-line="223" selection-end-column="102" />
           <folding>
             <element signature="e#53#73#0" expanded="true" />
-            <element signature="e#1147#1672#0" />
-            <element signature="e#1673#4345#0" />
-            <element signature="e#4468#4541#0" />
-            <element signature="e#4904#5397#0" />
+            <element signature="e#1775#4447#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DStar.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="569" column="28" selection-start-line="569" selection-start-column="28" selection-end-line="569" selection-end-column="28" />
+        <state relative-caret-position="-630">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
           <folding>
             <element signature="e#38#56#0" expanded="true" />
-            <element signature="e#1883#2236#0" />
-            <element signature="e#2238#13455#0" />
-            <element signature="e#13457#15523#0" />
-            <element signature="e#16998#17414#0" />
-            <element signature="e#17416#17561#0" />
-            <element signature="e#21946#22362#0" />
+            <element signature="e#1273#1586#0" expanded="true" />
+            <element signature="e#2180#2412#0" expanded="true" />
+            <element signature="e#2628#2699#0" expanded="true" />
+            <element signature="e#2508#13884#0" />
+            <element signature="e#13886#15929#0" />
+            <element signature="e#15931#17045#0" />
+            <element signature="e#17418#17834#0" />
+            <element signature="e#17836#17981#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="106" column="4" selection-start-line="106" selection-start-column="4" selection-end-line="106" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#1675#1741#0" expanded="true" />
           </folding>
         </state>
       </provider>
