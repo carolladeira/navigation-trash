@@ -20,6 +20,7 @@ public:
     void drawMeshes(NavMesh *navMesh, int nWall);
     void drawGraph(DStar *dStar);
     void drawPath(DStar *dStar);
+    void drawPathDStar(DStar *dstar);
 
 
 

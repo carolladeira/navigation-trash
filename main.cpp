@@ -67,7 +67,7 @@ void display (void)
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-
+    navMesh->atualizaObstacles(obstaculos, num_paredes);
     scene->drawScene(navMesh, dstar, agente,num_paredes);
     scene->drawMeshes(navMesh, num_paredes);
 
@@ -77,25 +77,30 @@ void display (void)
 void idle()
 {
 
+   // navMesh->atualizaPosicao();
+  //  glutPostRedisplay();
+
+
 }
 
 void init()
 {
     glClearColor(1.0, 1.0, 1.0, 0.0);
+
     agente = new Agente();
     scene = new Scene();
-    obstaculos = new Wall[num_paredes];
     navMesh = new NavMesh(TAM_CENARIO);
+    navMesh->criaObjetos(num_paredes, TAM_CENARIO);
+    dstar = new DStar(navMesh, 50, agente);
+   // dstar->AStar();
+    dstar->DStarLite();
+    //obstaculos = new Wall[num_paredes];
 //    for(int i=0; i< num_paredes; i++)
 //    {
 //        obstaculos[i].geraPosicaoInicial(TAM_CENARIO, num_paredes);
 //    }
-    navMesh->criaObjetos(num_paredes, TAM_CENARIO);
-    navMesh->atualizaObstacles(obstaculos, num_paredes);
     //navMesh->criaNavMesh(obstaculos);
-    navMesh->criaGrid(obstaculos, TAM_CENARIO);
-    dstar = new DStar(navMesh, 50, agente);
-    dstar->AStar();
+
 
 
 

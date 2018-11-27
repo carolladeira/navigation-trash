@@ -17,6 +17,13 @@ Agente::Agente() {
     this->end.x = rand() % (int)500;
     this->end.y = rand() % (int)500;
 
+//    this->start.x =15;
+//    this->start.y =15;
+//
+//    this->end.x = 5;
+//    this->end.y = 35;
+
+
 }
 
 
@@ -172,21 +179,21 @@ void NavMesh::criaGrid(Wall *obstacles, float tam_cenario) {
 void NavMesh::criaObjetos(int num_paredes, int tam_cenario) {
     objects= new Wall[num_paredes];
 
-    this->objects[0].pontos[0].x = 12;		            this->objects[0].pontos[0].y = 12;
-    this->objects[0].pontos[1].x = 22;           this->objects[0].pontos[1].y = 12;
-    this->objects[0].pontos[2].x = 22;	        this->objects[0].pontos[2].y = 22;
-    this->objects[0].pontos[3].x = 12;		            this->objects[0].pontos[3].y = 22;
+    this->objects[0].pontos[0].x = 22;		            this->objects[0].pontos[0].y = 22;
+    this->objects[0].pontos[1].x = 32;           this->objects[0].pontos[1].y = 22;
+    this->objects[0].pontos[2].x = 32;	        this->objects[0].pontos[2].y = 32;
+    this->objects[0].pontos[3].x = 22;		            this->objects[0].pontos[3].y = 32;
 
     int ax = (int)objects[0].pontos[0].x / tamanho;     int ay =(int) objects[0].pontos[0].y / tamanho;
     int bx = (int)objects[0].pontos[1].x / tamanho;     int by = (int)objects[0].pontos[1].y / tamanho;
     int cx = (int)objects[0].pontos[2].x / tamanho;     int cy = (int)objects[0].pontos[2].y / tamanho;
     int dx = (int)objects[0].pontos[3].x / tamanho;     int dy = (int)objects[0].pontos[3].y / tamanho;
 
-    std::cout  << " " << ax << " " << ay << std::endl;
+  //  std::cout  << " " << ax << " " << ay << std::endl;
 
     for (int _x = ax;_x<=cx; _x++){
         for(int _y=ay;_y<=cy;_y++){
-            std::cout  << " " << _x << " " << _y << std::endl;
+         //   std::cout  << " " << _x << " " << _y << std::endl;
 
             _meshes[_x][_y] = 1;
             cells[_x][_y].cost = INT_MAX;
@@ -226,4 +233,25 @@ void NavMesh::criaObjetos(int num_paredes, int tam_cenario) {
 
 }
 
+void NavMesh::atualizaPosicao() {
+    this->objects[0].pontos[0].x = this->objects[0].pontos[0].x + 0.01;		            this->objects[0].pontos[0].y = this->objects[0].pontos[0].y + 0.01;
+    this->objects[0].pontos[1].x = this->objects[0].pontos[1].x + 0.01;                    this->objects[0].pontos[1].y = this->objects[0].pontos[1].y+ 0.01;
+    this->objects[0].pontos[2].x = this->objects[0].pontos[2].x+ 0.01;	                this->objects[0].pontos[2].y = this->objects[0].pontos[2].y+ 0.01;
+    this->objects[0].pontos[3].x = this->objects[0].pontos[3].x+ 0.01;		            this->objects[0].pontos[3].y = this->objects[0].pontos[3].y+ 0.01;
 
+    int ax = (int)objects[0].pontos[0].x / tamanho;     int ay =(int) objects[0].pontos[0].y / tamanho;
+    int bx = (int)objects[0].pontos[1].x / tamanho;     int by = (int)objects[0].pontos[1].y / tamanho;
+    int cx = (int)objects[0].pontos[2].x / tamanho;     int cy = (int)objects[0].pontos[2].y / tamanho;
+    int dx = (int)objects[0].pontos[3].x / tamanho;     int dy = (int)objects[0].pontos[3].y / tamanho;
+
+
+    //    std::cout  << " " << ax << " " << ay << std::endl;
+
+    for (int _x = ax;_x<=cx; _x++){
+        for(int _y=ay;_y<=cy;_y++){
+            //   std::cout  << " " << _x << " " << _y << std::endl;
+
+            _meshes[_x][_y] = 1;
+        }
+    }
+}

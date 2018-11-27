@@ -8,13 +8,20 @@
 #include "NavMesh.h"
 #include <list>
 
+class Pair{
+public:
+    float first, second;
+};
 
 class Node{
 public:
-    float g, h, f;
- //   char estado; ///-1 = nó fechado, 0 = nó não explorado, 1 = nó aberto
+    float g, h, f, rhs;
+    Pair key;
     int id;
     Map pontos;
+    int estado;
+    //   char estado; ///-1 = nó fechado, 0 = nó não explorado, 1 = nó aberto
+
 
     Node();
     ~Node();
@@ -33,32 +40,48 @@ public:
     std::vector <Node> closed; //node is no longer open
     std::vector <Node> obstacles; //node is no longer open
 
+    Node s_start, s_end;
     Agente pessoa;
 
+    Node custo[QUANTIDADE_CELULA*QUANTIDADE_CELULA];
+
     std::vector<std::vector <Node>> listaAdj;
-    std::vector<std::vector <Node>> cameFrom;
+    //std::vector<std::vector <Node>> cameFrom;
 
     std::vector<Node> mapPath[QUANTIDADE_CELULA*QUANTIDADE_CELULA];
-
-   // Node mapPath[QUANTIDADE_CELULA*QUANTIDADE_CELULA];
-
 
     DStar(NavMesh *nav, int tamanho, Agente *agente);
     ~DStar() {};
 
-    void ligaTodosNos();
+    //void ligaTodosNos();
+    std::vector<Node> nosVizinhos(Node n, int tipo,  int tamanho);
+    void imprime();
 
+
+    ///A Star
+    std::vector<Node> AStar();
+    std::vector<Node> expand(Node current);
     std::vector<Node> reconstructPath(std::vector<Node> mathPath[], Node current);
     float calculaDistancia(Map atual, Map destino);
     Node menorFScore(std::vector<Node> open);
-
-    std::vector<Node> AStar();
-    std::vector<Node> expand(Node current);
-    std::vector<Node> nosVizinhos(Node n, int tipo,  int tamanho);
-    void imprime();
     void imprimiPath();
 
-};
+    ///D Star Lite
+    void DStarLite();
+    void updateVertex(Node u, float km);
+    Pair calculateKey(Node s, float km);
+    int findI(Node u);
+    Node min_succ(Node u);
+    void computeShortestPath(float km);
+    Node ordena(std::vector<Node> open);
+    bool compara(Pair u, Pair s);
+
+    float getG(Node u);
+    float getRhs(Node u);
+
+
+
+    };
 
 
 #endif //NAVIGATION_MESH_DSTAR_H

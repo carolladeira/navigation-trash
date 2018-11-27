@@ -10,11 +10,11 @@
 using namespace std;
 
 void Scene::drawAgent(Agente *agente) {
-    glPointSize((GLfloat)10.0f);
+    glPointSize((GLfloat)12.0f);
     glColor3f(1.0,0.0,1.0);
     glBegin(GL_POINTS);
         glVertex2f(agente->start.x, agente->start.y);
-        std::cout <<  agente->start.x << "------"<<  agente->start.y << std::endl;
+      //  std::cout <<  agente->start.x << "------"<<  agente->start.y << std::endl;
 
     glEnd();
     glColor3f(0.0,1.0,0.0);
@@ -31,6 +31,8 @@ void Scene::drawScene(NavMesh *navMesh, DStar *dstar, Agente * agente, int nWall
     this->drawObstacles(navMesh, nWall);
    // this->drawGraph(dstar);
     this->drawPath(dstar);
+    this->drawPathDStar(dstar);
+
 
 }
 
@@ -161,4 +163,18 @@ void Scene::drawPath(DStar *dStar) {
 
 
 
+}
+void Scene::drawPathDStar(DStar *dstar)
+{
+    glLineWidth((GLfloat)2.0);
+
+    glColor3f (0.2, 1.0, 1.0);
+    glBegin(GL_LINE_STRIP);
+
+    for(int j=0; j<dstar->closed.size(); j++){
+        glVertex2f (dstar->closed[j].pontos.x, dstar->closed[j].pontos.y);
+        std::cout <<  dstar->closed[j].id << std::endl;
+// std::cout <<  dStar->totalPath[j].pontos.x << ","<<  dStar->totalPath[j].pontos.y << std::endl;
+    }
+    glEnd();
 }

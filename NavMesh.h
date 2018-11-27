@@ -96,7 +96,7 @@ public:
   //  void Cria_NavMesh ();
     void criaGrid(Wall *obstacles, float tam_cenario);
     void criaObjetos(int num_paredes, int tam_cenario);
-
+    void atualizaPosicao();
 
     NavMesh(int tam_cenario);
     virtual ~NavMesh(){};
