@@ -37,8 +37,10 @@ public:
 class DStar {
 public:
     std::vector<Node> totalPath ; //path;
-    std::vector <Node> open; //node is currently open
+    std::vector <Node> open;
     std::vector <Node> closed; //node is no longer open
+    std::vector <Node> open1;
+    std::vector <Node> closed1; //node is no longer open
     std::vector <Node> obstacles; //node is no longer open
 
     Node s_start, s_end;
@@ -51,7 +53,7 @@ public:
 
     std::vector<Node> mapPath[QUANTIDADE_CELULA*QUANTIDADE_CELULA];
 
-    DStar(NavMesh *nav, int tamanho, Agente *agente);
+    DStar(NavMesh *nav, int tamanho, Agente *agente, Wall *objetos);
     ~DStar() {};
 
     //void ligaTodosNos();
@@ -68,7 +70,7 @@ public:
     void imprimiPath();
 
     ///D Star Lite
-    void DStarLite();
+    void DStarLite(Agente* agente, NavMesh *navMesh);
     void updateVertex(Node u, float km);
     Pair calculateKey(Node s, float km);
     int findI(Node u);
@@ -81,6 +83,8 @@ public:
     float getRhs(Node u);
 
     void updateCell(int x, int y, float val);
+    void criaObstaculos();
+    void atualizaCaminho(NavMesh *navMesh);
 
 
 

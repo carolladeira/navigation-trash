@@ -13,17 +13,17 @@ using namespace std;
 
 //-------------------------Agente------------------------------------
 Agente::Agente() {
-//    this->start.x =rand() % (int)500;
-//    this->start.y =rand() % (int)500;
+    this->start.x =rand() % (int)500;
+    this->start.y =rand() % (int)500;
 //
-//    this->end.x = rand() % (int)500;
-//    this->end.y = rand() % (int)500;
+    this->end.x = rand() % (int)500;
+    this->end.y = rand() % (int)500;
 //
-    this->start.x =15;
-    this->start.y =15;
+//    this->start.x =15;
+//    this->start.y =15;
 
-    this->end.x = 115;
-    this->end.y = 210;
+//    this->end.x = 115;
+//    this->end.y = 210;
 
 
 }
@@ -36,21 +36,10 @@ Map Agente::currentPosition() {
     return Map();
 }
 
+void Agente::atualizaPosicao(Map atual) {
+    this->atual = atual;
 
-//-------------------------Obstaculos------------------------------------
-//void Wall::geraPosicaoInicial(float tam_cenario, int num_paredes) {
-//
-//    this->atual.x = rand() % (int)tam_cenario;
-//    this->atual.y = rand() % (int)tam_cenario;
-//    this->width= rand() % MAX_LARGURA_PAREDE + MIN_LARGURA_PAREDE;
-//    this->height= rand() % MAX_LARGURA_PAREDE + MIN_LARGURA_PAREDE;
-//
-//    this->pontos[0].x = this->atual.x;		            this->pontos[0].y = this->atual.y;
-//    this->pontos[1].x = this->atual.x + this->width;    this->pontos[1].y = this->atual.y;
-//    this->pontos[2].x = this->atual.x + this->width;	this->pontos[2].y = this->atual.y + this->height;
-//    this->pontos[3].x = this->atual.x;		            this->pontos[3].y = this->atual.y + this->height;
-//}
-
+}
 
 Mesh::Mesh(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, int t, int parede_pai){
     this->tipo = t;
@@ -189,10 +178,11 @@ void NavMesh::criaGrid(Wall *obstacles, float tam_cenario) {
 void NavMesh::criaObjetos(int num_paredes, int tam_cenario) {
     objects= new Wall[num_paredes];
 
-    this->objects[0].pontos[0].x = 22;		            this->objects[0].pontos[0].y = 22;
-    this->objects[0].pontos[1].x = 32;           this->objects[0].pontos[1].y = 22;
-    this->objects[0].pontos[2].x = 32;	        this->objects[0].pontos[2].y = 32;
-    this->objects[0].pontos[3].x = 22;		            this->objects[0].pontos[3].y = 32;
+    this->objects[0].id = 0;
+    this->objects[0].pontos[0].x = 62;		            this->objects[0].pontos[0].y = 22;
+    this->objects[0].pontos[1].x = 72;           this->objects[0].pontos[1].y = 22;
+    this->objects[0].pontos[2].x = 62;	        this->objects[0].pontos[2].y = 32;
+    this->objects[0].pontos[3].x = 72;		            this->objects[0].pontos[3].y = 32;
 
     int ax = (int)objects[0].pontos[0].x / tamanho;     int ay =(int) objects[0].pontos[0].y / tamanho;
     int bx = (int)objects[0].pontos[1].x / tamanho;     int by = (int)objects[0].pontos[1].y / tamanho;
@@ -215,6 +205,7 @@ void NavMesh::criaObjetos(int num_paredes, int tam_cenario) {
         float width= rand() % MAX_LARGURA_PAREDE + MIN_LARGURA_PAREDE;
         float height= rand() % MAX_LARGURA_PAREDE + MIN_LARGURA_PAREDE;
 
+        this->objects[i].id = i;
         this->objects[i].pontos[0].x = x;		            this->objects[i].pontos[0].y = y;
         this->objects[i].pontos[1].x = x + width;           this->objects[i].pontos[1].y = y;
         this->objects[i].pontos[2].x = x + width;	        this->objects[i].pontos[2].y = y + height;
@@ -244,25 +235,30 @@ void NavMesh::criaObjetos(int num_paredes, int tam_cenario) {
                 cells[_x][_y].cost = INT_MAX;
             }
         }
-
-
     }
-
 }
 
-void NavMesh::atualizaPosicao() {
+void NavMesh::atualizaPosicao(int qtd_movimento) {
 
-    //formula = j* 50 + i ---- j: coluna horizontal, i: coluna vertical
-    //foruma inversa  =  id/ 50 = j (coluna horizontal), id%50 = i coluna vertical
-    this->objects[0].pontos[0].x = this->objects[0].pontos[0].x + 0.101;		            this->objects[0].pontos[0].y = this->objects[0].pontos[0].y + 0.101;
-    this->objects[0].pontos[1].x = this->objects[0].pontos[1].x + 0.101;                    this->objects[0].pontos[1].y = this->objects[0].pontos[1].y+ 0.101;
-    this->objects[0].pontos[2].x = this->objects[0].pontos[2].x+ 0.101;	                this->objects[0].pontos[2].y = this->objects[0].pontos[2].y+ 0.101;
-    this->objects[0].pontos[3].x = this->objects[0].pontos[3].x+ 0.101;		            this->objects[0].pontos[3].y = this->objects[0].pontos[3].y+ 0.101;
+    for (int i=0; i < qtd_movimento; i ++){
+        this->objects[i].pontos[0].x = this->objects[i].pontos[0].x - 0.01;		            this->objects[i].pontos[0].y = this->objects[i].pontos[0].y + 0.01;
+        this->objects[i].pontos[1].x = this->objects[i].pontos[1].x - 0.01;                 this->objects[i].pontos[1].y = this->objects[i].pontos[1].y+ 0.01;
+        this->objects[i].pontos[2].x = this->objects[i].pontos[2].x- 0.01;	                this->objects[i].pontos[2].y = this->objects[i].pontos[2].y+ 0.01;
+        this->objects[i].pontos[3].x = this->objects[i].pontos[3].x- 0.01;		            this->objects[i].pontos[3].y = this->objects[i].pontos[3].y+ 0.01;
 
-    int ax = (int)objects[0].pontos[0].x / tamanho;     int ay =(int) objects[0].pontos[0].y / tamanho;
-    int bx = (int)objects[0].pontos[1].x / tamanho;     int by = (int)objects[0].pontos[1].y / tamanho;
-    int cx = (int)objects[0].pontos[2].x / tamanho;     int cy = (int)objects[0].pontos[2].y / tamanho;
-    int dx = (int)objects[0].pontos[3].x / tamanho;     int dy = (int)objects[0].pontos[3].y / tamanho;
+        int ax = (int)objects[i].pontos[0].x / tamanho;     int ay =(int) objects[i].pontos[0].y / tamanho;
+        int cx = (int)objects[i].pontos[2].x / tamanho;     int cy = (int)objects[i].pontos[2].y / tamanho;
+        for (int _x = ax;_x<=cx; _x++){
+            for(int _y=ay;_y<=cy;_y++){
+                //   std::cout  << " " << _x << " " << _y << std::endl;
+
+                _meshes[_x][_y] = 1;
+            }
+        }
+    }
+
+
+
 
 
 #ifdef DEBUG
@@ -270,11 +266,68 @@ void NavMesh::atualizaPosicao() {
 
 #endif
 
-    for (int _x = ax;_x<=cx; _x++){
-        for(int _y=ay;_y<=cy;_y++){
-            //   std::cout  << " " << _x << " " << _y << std::endl;
 
-            _meshes[_x][_y] = 1;
+}
+
+//    for(int i=0; i <nWall; i++){
+//           std::cout  << " " << (int)objetos[i].pontos[0].x / 50 << " " << i << std::endl;
+//
+//        int ax = (int)objetos[i].pontos[0].x / 50;     int ay =(int) objetos[i].pontos[0].y / 50;
+//        int cx = (int)objetos[i].pontos[2].x / 50;     int cy = (int)objetos[i].pontos[2].y / 50;
+//
+//
+//        for (int _x = ax;_x<=cx; _x++){
+//            for(int _y=ay;_y<=cy;_y++){
+//                this->_meshes[_x][_y] = 1;
+//            }
+//        }
+//    }
+
+void NavMesh::removeGridObstaculos(Wall *objetos, int m, int nWall) {
+
+    int ax = (int)objetos[m].pontos[0].x / 10;     int ay =(int) objetos[m].pontos[0].y / 10;
+    int cx = (int)objetos[m].pontos[2].x / 10;     int cy = (int)objetos[m].pontos[2].y / 10;
+
+    for (int _x = ax-1;_x<=cx+1; _x++){
+        for(int _y=ay-1;_y<=cy+1;_y++){
+            this->_meshes[_x][_y] = 0;
         }
     }
+
+}
+
+void NavMesh::criaGridObstaculos(Wall *objetos, int m, int nWall) {
+
+    int ax = (int)objetos[m].pontos[0].x / 10;     int ay =(int) objetos[m].pontos[0].y / 10;
+    int cx = (int)objetos[m].pontos[2].x / 10;     int cy = (int)objetos[m].pontos[2].y / 10;
+    for (int _x = ax;_x<=cx; _x++){
+        for(int _y=ay;_y<=cy;_y++){
+            this->_meshes[_x][_y] = 1;
+        }
+    }
+}
+
+void Wall::geraPosicaoInicial(float tam_cenario, int num_paredes) {
+    float x = rand() % (int)tam_cenario -1 + 1;
+    float y = rand() % (int)tam_cenario -1 + 1;
+    float width= rand() % MAX_LARGURA_PAREDE + MIN_LARGURA_PAREDE;
+    float height= rand() % MAX_LARGURA_PAREDE + MIN_LARGURA_PAREDE;
+
+    pontos[0].x = x;		            pontos[0].y = y;
+    pontos[1].x = x + width;           pontos[1].y = y;
+    pontos[2].x = x + width;	        pontos[2].y = y + height;
+    pontos[3].x = x;		            pontos[3].y = y + height;
+}
+
+void Wall::atualizaPosicao(float tam_cenario, int num_paredes) {
+//    float velocidadex = (rand() % 4-2)/10;
+//    float velocidadey = (rand() % 4-2)/10;
+    float velocidadex = 0.1;
+    float velocidadey = 0.1;
+
+
+    this->pontos[0].x = this->pontos[0].x + velocidadex ;		            this->pontos[0].y = this->pontos[0].y + velocidadey;
+    this->pontos[1].x = this->pontos[1].x + velocidadex ;                   this->pontos[1].y = this->pontos[1].y + velocidadey;
+    this->pontos[2].x = this->pontos[2].x + velocidadex ;	                this->pontos[2].y = this->pontos[2].y + velocidadey;
+    this->pontos[3].x = this->pontos[3].x + velocidadex ;		            this->pontos[3].y = this->pontos[3].y + velocidadey;
 }

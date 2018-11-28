@@ -16,8 +16,8 @@ public:
     ~Scene() {};
 
 
-    void drawScene(NavMesh *navMesh, DStar *dstar, Agente * agente, int nWall);
-    void drawObstacles(NavMesh *navMesh, int nWall);
+    void drawScene(NavMesh *navMesh, DStar *dstar, Wall* objetos, Agente * agente, int nWall);
+    void drawObstacles(NavMesh *navMesh,Wall* objetos, int nWall);
     void drawAgent(Agente *agente);
     void drawMeshes(NavMesh *navMesh, int nWall);
     void drawGraph(DStar *dStar);

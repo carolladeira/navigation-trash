@@ -10,23 +10,32 @@
 
 
 #define TAM_CENARIO 500
-#define num_paredes 5
+#define num_paredes 20
+#define QTD_MOVIMENTO 5
+
 #define TAMANHO_CELULA 10
 
-//#define DEBUG
-
+#define DEBUG
+///formula = j* 50 + i ---- j: coluna horizontal, i: coluna vertical
+///formula inversa  =  id/ 50 = j (coluna horizontal), id%50 = i coluna vertical
 
 Scene *scene;
 Agente *agente;
-Wall *obstaculos;
+Wall *objetos;
 NavMesh *navMesh;
 DStar *dstar;
+int i=0;
+
 
 void reshape(int, int);
 void display(void);
 void idle ();
 void init();
 void mouse(int button, int state, int x, int y);
+
+///funcoes auxiliares
+bool taOcupado(int id);
+void auxilia(int i);
 
 int main(int argc, char** argv) {
    // std:: cout << "   "<<__cplusplus ;
@@ -48,9 +57,6 @@ int main(int argc, char** argv) {
 
     init();
 
-
-
-
     glutMainLoop();
 
     return 0;
@@ -69,7 +75,7 @@ void reshape(int w, int h) {
 
 void display (void)
 {
-    usleep(2000);
+
     glClear (GL_COLOR_BUFFER_BIT);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -77,16 +83,8 @@ void display (void)
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-
-    scene->drawScene(navMesh, dstar, agente,num_paredes);
-
-
-
-
-#ifdef DEBUG
-        std::cout<<agente->atual.x << ","<<  agente->atual.y << std::endl;
-    #endif
-
+    scene->drawScene(navMesh, dstar, objetos, agente,num_paredes);
+    scene->drawObstacles(navMesh,objetos,num_paredes);
 
 
     glFlush ();
@@ -95,29 +93,45 @@ void display (void)
 
 void idle()
 {
-   // dstar->DStarLite(agente);
+    usleep(20000);
 
-    navMesh->atualizaPosicao();
-    scene->drawPathAtual(agente);
-   // scene->drawPathDStar(dstar);
-
-
+    for(int m=0; m <num_paredes; m++){
+        objetos[m].atualizaPosicao(TAM_CENARIO, num_paredes);
+        navMesh->removeGridObstaculos(objetos,m,num_paredes);
+    }
+    for(int m=0; m <num_paredes; m++){
+        navMesh->criaGridObstaculos(objetos,m,num_paredes);
+    }
+    for(int i =0; i <dstar->closed.size(); i++){
+        if (taOcupado(dstar->closed[i].id) == true) {
+                dstar->DStarLite(agente, navMesh);
+            }
+    }
     glutPostRedisplay();
-
 
 }
 
 void init()
 {
     glClearColor(1.0, 1.0, 1.0, 0.0);
-    agente = new Agente();
     scene = new Scene();
+    agente = new Agente();
+    objetos = new Wall[num_paredes];
     navMesh = new NavMesh(TAM_CENARIO);
-    navMesh->criaObjetos(num_paredes, TAM_CENARIO);
-    dstar = new DStar(navMesh, 50, agente);
-    dstar->DStarLite();
-  //  scene->drawScene(navMesh, dstar, agente,num_paredes);
+   // navMesh->criaObjetos(num_paredes, TAM_CENARIO);
+    for(int m=0; m <num_paredes; m++){
+     //   std::cout  << "START | m: " << m << std::endl;
+        objetos[m].geraPosicaoInicial(TAM_CENARIO, num_paredes);
+        navMesh->criaGridObstaculos(objetos,m,num_paredes);
+
+
+    }
+    dstar = new DStar(navMesh, 50, agente, objetos);
+    dstar->DStarLite(agente, navMesh);
+    agente->atual = agente->start;
 }
+
+
 void clickCell(int x, int y) {
 
 
@@ -133,17 +147,19 @@ void mouse(int button, int state, int x, int y) {
 
 
 }
-//void auxilia(){
-//
-//    while(agente->atual.x != agente->end.x){
-//        scene->drawPathAtual(agente);
-//        for(int i=0; i < dstar->closed.size(); i++){
-//            //agente.atual = closed[i].pontos;
-//            if(veSetaocupado(dstar->closed[i+1].id)){
-//                dstar->DStarLite();
-//            }
-//        }
-//
-//    }
-//
-//}
+void auxilia(int i) {
+    if (agente->atual.x != agente->end.x && agente->atual.y != agente->end.y) {
+        if(dstar->closed[i+1].id != dstar->s_end.id) {
+            if (taOcupado(dstar->closed[i + 1].id) == true) {
+                dstar->DStarLite(agente, navMesh);
+            }
+        }
+    }
+}
+bool taOcupado(int id){
+    int j = id/50;
+    int i = id%50;
+    if(navMesh->_meshes[i][j]==1){
+        return true;
+    }return false;
+}

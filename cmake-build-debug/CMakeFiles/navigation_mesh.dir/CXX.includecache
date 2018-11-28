@@ -1,0 +1,80 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/nao/Área de Trabalho/navigation-mesh/DStar.cpp
+DStar.h
+/home/nao/Área de Trabalho/navigation-mesh/DStar.h
+iostream
+-
+algorithm
+-
+stdlib.h
+-
+GL/glut.h
+-
+
+/home/nao/Área de Trabalho/navigation-mesh/DStar.h
+NavMesh.h
+/home/nao/Área de Trabalho/navigation-mesh/NavMesh.h
+list
+-
+
+/home/nao/Área de Trabalho/navigation-mesh/NavMesh.cpp
+NavMesh.h
+/home/nao/Área de Trabalho/navigation-mesh/NavMesh.h
+iostream
+-
+
+/home/nao/Área de Trabalho/navigation-mesh/NavMesh.h
+math.h
+-
+time.h
+-
+stdlib.h
+-
+vector
+-
+bits/stdc++.h
+-
+
+/home/nao/Área de Trabalho/navigation-mesh/Scene.cpp
+GL/glut.h
+-
+iostream
+-
+Scene.h
+/home/nao/Área de Trabalho/navigation-mesh/Scene.h
+fstream
+-
+
+/home/nao/Área de Trabalho/navigation-mesh/Scene.h
+NavMesh.h
+/home/nao/Área de Trabalho/navigation-mesh/NavMesh.h
+DStar.h
+/home/nao/Área de Trabalho/navigation-mesh/DStar.h
+
+/home/nao/Área de Trabalho/navigation-mesh/main.cpp
+iostream
+-
+stdlib.h
+-
+GL/glut.h
+-
+time.h
+-
+math.h
+-
+Scene.h
+/home/nao/Área de Trabalho/navigation-mesh/Scene.h
+NavMesh.h
+/home/nao/Área de Trabalho/navigation-mesh/NavMesh.h
+DStar.h
+/home/nao/Área de Trabalho/navigation-mesh/DStar.h
+unistd.h
+-
+

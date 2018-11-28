@@ -48,17 +48,21 @@ public:
     Agente();
     void move(Map posicao);
     Map currentPosition();
+    void atualizaPosicao(Map atual);
 
 };
 
 class Wall: public Polygon{
 public:
+    int id;
     Map atual;
     float height;
     float width;
     float ang;
 
-   // void geraPosicaoInicial(float tam_cenario, int num_paredes);
+
+    void geraPosicaoInicial(float tam_cenario, int num_paredes);
+    void atualizaPosicao(float tam_cenario, int num_paredes);
 
 };
 class Mesh:public Polygon{
@@ -93,10 +97,13 @@ public:
     void atualizaObstacles(Wall *obstacles, int size);
     void criaNavMesh(Wall *obstacles);
     void Cria_Mesh_Cobertura ();
-  //  void Cria_NavMesh ();
+  ///  void Cria_NavMesh ();
     void criaGrid(Wall *obstacles, float tam_cenario);
     void criaObjetos(int num_paredes, int tam_cenario);
-    void atualizaPosicao();
+  //  void criaObjetosTeste(int tam_cenario);
+    void atualizaPosicao(int qtd_movimento);
+    void criaGridObstaculos(Wall objetos[], int m, int nWall);
+    void removeGridObstaculos(Wall objetos[], int m, int nWall);
 
     NavMesh(int tam_cenario);
     virtual ~NavMesh(){};
