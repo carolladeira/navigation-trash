@@ -6,7 +6,7 @@
 #include "Scene.h"
 
 #include <fstream>
-//#define DEBUG
+#define DEBUG
 
 using namespace std;
 
@@ -19,6 +19,13 @@ void Scene::drawScene(NavMesh *navMesh, DStar *dstar, Agente * agente, int nWall
     this->drawPathDStar(dstar);
 
 
+}
+
+void Scene::drawPathAtual(Agente *agente){
+    glColor3f(1.0,0.0,0.0); //red
+    glBegin(GL_POINTS);
+    glVertex2f(agente->atual.x, agente->atual.y);
+    glEnd();
 }
 ///desenha agente
 void Scene::drawAgent(Agente *agente) {
@@ -33,10 +40,7 @@ void Scene::drawAgent(Agente *agente) {
         glVertex2f(agente->end.x, agente->end.y);
     glEnd();
 
-    glColor3f(1.0,0.0,0.0); //red
-    glBegin(GL_POINTS);
-        glVertex2f(agente->atual.x, agente->atual.y);
-    glEnd();
+
 
 }
 

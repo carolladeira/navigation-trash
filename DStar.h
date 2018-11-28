@@ -42,7 +42,7 @@ public:
     std::vector <Node> obstacles; //node is no longer open
 
     Node s_start, s_end;
-    Agente pessoa;
+  //  Agente pessoa;
 
     Node custo[QUANTIDADE_CELULA*QUANTIDADE_CELULA];
 
@@ -68,7 +68,7 @@ public:
     void imprimiPath();
 
     ///D Star Lite
-    void DStarLite(Agente *agente);
+    void DStarLite();
     void updateVertex(Node u, float km);
     Pair calculateKey(Node s, float km);
     int findI(Node u);
@@ -79,6 +79,8 @@ public:
 
     float getG(Node u);
     float getRhs(Node u);
+
+    void updateCell(int x, int y, float val);
 
 
 

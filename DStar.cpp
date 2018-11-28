@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <GL/glut.h>
 
-//#define DEBUG
+#define DEBUG
 
 
 Node::Node() {
@@ -26,7 +26,7 @@ Node::~Node() {
 
 DStar::DStar(NavMesh *nav, int tamanho, Agente *agente) {
     int m = 0;
-    this->pessoa = *agente;
+//    this->pessoa = *agente;
     std::vector<Node> temp;
     for (int i = 0; i < tamanho; i++) {
         for (int j = 0; j < tamanho; j++) {
@@ -39,6 +39,9 @@ DStar::DStar(NavMesh *nav, int tamanho, Agente *agente) {
             if(nav->_meshes[i][j] == 1){
                 obstacles.push_back(nox);
                 custo[nox.id].ocupado = true;
+#ifdef DEBUG
+                std::cout  << " :  " << nox.id;
+#endif
                 //continue;
             }
             if (((agente->start.x - 5) <= nox.pontos.x == true) && (((agente->start.x + 5) >= nox.pontos.x == true))){
@@ -46,13 +49,13 @@ DStar::DStar(NavMesh *nav, int tamanho, Agente *agente) {
                    // pessoa.start.id = m;
                     this->s_start.id = m;
                     this->s_start.pontos = agente->start;
-#ifdef DEBUG
-    std::cout<<std::endl;
-    std::cout<<"--------------D Star Lite-----------------------" <<std::endl;
-    std::cout  << "START | m: " << m << std::endl;
-    std::cout  << "agente: " << agente->start.x << " " << agente->start.y << " - ";
-    std::cout  << "nox: " << nox.pontos.x << " " << nox.pontos.y<< std::endl;
-#endif
+//#ifdef DEBUG
+//    std::cout<<std::endl;
+//    std::cout<<"--------------D Star Lite-----------------------" <<std::endl;
+//    std::cout  << "START | m: " << m << std::endl;
+//    std::cout  << "agente: " << agente->start.x << " " << agente->start.y << " - ";
+//    std::cout  << "nox: " << nox.pontos.x << " " << nox.pontos.y<< std::endl;
+//#endif
 
                 }
             }
@@ -63,12 +66,12 @@ DStar::DStar(NavMesh *nav, int tamanho, Agente *agente) {
                  //   pessoa.end.id = m;
                     this->s_end.id = m;
                     this->s_end.pontos = agente->end;
-#ifdef DEBUG
-    std::cout<<std::endl;
-    std::cout  << "END | m: " << m << std::endl;
-    std::cout  << "agente: " << agente->start.x << " " << agente->start.y << " - ";
-    std::cout  << "nox: " << nox.pontos.x << " " << nox.pontos.y<< std::endl;
-#endif
+//#ifdef DEBUG
+//    std::cout<<std::endl;
+//    std::cout  << "END | m: " << m << std::endl;
+//    std::cout  << "agente: " << agente->start.x << " " << agente->start.y << " - ";
+//    std::cout  << "nox: " << nox.pontos.x << " " << nox.pontos.y<< std::endl;
+//#endif
                 }
             }
 
@@ -80,8 +83,9 @@ DStar::DStar(NavMesh *nav, int tamanho, Agente *agente) {
     }
     //imprime();
 #ifdef DEBUG
-    std::cout<<this->s_start.id<<" " ;
-    std::cout<<this->s_end.id<<" " ;
+    std::cout<<std::endl;
+    std::cout<<"START: "<<this->s_start.id<<" " ;
+    std::cout<<" END: "<<this->s_end.id<<" " ;
 
 #endif
 }
@@ -533,8 +537,8 @@ std::vector<Node> DStar::reconstructPath(std::vector<Node> mathPath[], Node curr
 
 void DStar:: imprimiPath(){
     std::cout << " imprimi path"<< std::endl;
-    for(int i =0; i < totalPath.size(); i++){
-        std::cout << ' ' << i;
+    for(int i =0; i < closed.size(); i++){
+        std::cout << ' ' << closed[i].id;
 
     }
 }
@@ -578,11 +582,11 @@ std::vector<Node> DStar::expand(Node current) {
     return temp;
 }
 
-void DStar:: DStarLite(Agente *agente){
+void DStar:: DStarLite(){
+    closed.clear();
     int km=0;
     float c_old;
 
-    //Node s_end;
     s_end.pontos = s_end.pontos;
     s_end.id = s_end.id;
     s_end.rhs = 0;
@@ -594,9 +598,6 @@ void DStar:: DStarLite(Agente *agente){
     open.push_back(s_end);
     closed.push_back(s_start);
 
-    std::vector<Node> vizinhos;
-    std::vector<Node> temp;
-
     Node s_last, s_inicio;
     s_inicio.pontos = s_start.pontos;
     s_inicio.id = s_start.id;
@@ -606,27 +607,25 @@ void DStar:: DStarLite(Agente *agente){
     custo[s_end.id].estado=1;
     computeShortestPath(km);
     while(s_inicio.id != s_end.id){
-       // if(n.rhs == INT_MAX) there is no known path
        s_inicio = min_succ(s_inicio);
        this->closed.push_back(s_inicio);
-       agente->atual=s_inicio.pontos;
-//        glPointSize((GLfloat)5.0f);
-//        glColor3f(1.0,0.0,0.0);
-//        glBegin(GL_POINTS);
-//        glVertex2f(agente->atual.x, agente->atual.y);
-//        glEnd();
+       imprimiPath();
+       //agente->atual=s_inicio.pontos;
+     //  agente->move(s_inicio.pontos);        ///atualiza obstaculos em movimento
+#ifdef DEBUG
+        std::cout  << "id:  " << s_inicio.id<< std::endl;
+#endif
        km = km + calculaDistancia(s_last,s_inicio);
        s_last = s_inicio;
        u = s_last;
-       for (int i = 0; i < listaAdj[s_last.id].size(); i++) ///para cada vizinho do atual
+       for (int i = 0; i < listaAdj[s_last.id].size(); i++) ///para cada vizinho do s_last
        {
             v = listaAdj[s_last.id][i];
             c_old = calculaDistancia(u,v);
-            //update the edgecost c(u,v);
             if(c_old > calculaDistancia(u,v)){
                 if(u.id != s_end.id) {
-                    listaAdj[s_last.id][i].rhs = std::min(getRhs(u), calculaDistancia(u, v) + getG(v));
-                    custo[u.id].rhs = listaAdj[s_last.id][i].rhs;
+                   // listaAdj[s_last.id][i].rhs = std::min(getRhs(u), calculaDistancia(u, v) + getG(v));
+                    custo[u.id].rhs = std::min(getRhs(u), calculaDistancia(u, v) + getG(v));
                     custo[u.id].g = getG(u);
                     custo[u.id].estado=1;
                     u.rhs = custo[u.id].rhs;
@@ -634,8 +633,8 @@ void DStar:: DStarLite(Agente *agente){
 
             }else if(u.rhs == c_old + getG(v)){
                 if(u.id != s_end.id) {
-                    listaAdj[s_last.id][i].rhs = min_succ(u).rhs;
-                    custo[u.id].rhs = listaAdj[s_last.id][i].rhs;
+                   // listaAdj[s_last.id][i].rhs = min_succ(u).rhs;
+                    custo[u.id].rhs = min_succ(u).rhs;
                     custo[u.id].g = getG(u);
                     custo[u.id].estado=1;
                     u.rhs = custo[u.id].rhs;
@@ -655,15 +654,13 @@ void DStar::computeShortestPath(float km){
     int m;
     float g_old;
     Pair k_old, k_new;
-    Pair n = ordena(this->open).key;
-    Pair t = calculateKey(s_start, km);
-    bool comparator = compara(n, t);
-    while(!this->open.empty() && compara(ordena(this->open).key, calculateKey(s_start,km)) == true || custo[s_start.id].rhs > custo[s_start.id].g){
+    while(!this->open.empty() && (compara(ordena(this->open).key,calculateKey(s_start,km)) == true) || (custo[s_start.id].rhs > custo[s_start.id].g)){
         u = this->open[0];
         k_old = u.key;
         k_new = calculateKey(u,km);
         if(compara(k_old, k_new) == true){
             m= findI(u);
+            u.key = k_new;
             this->open[m] = u;
         }else if(getG(u) > getRhs(u)){
             custo[u.id].g = getRhs(u);
@@ -703,12 +700,12 @@ void DStar::computeShortestPath(float km){
 void DStar::updateVertex(Node u, float km){
     Pair key;
     int m;
-    //u pertence a open
+    ///u pertence a open
     if(getG(u) != getRhs(u) && std::find(this->open.begin(), this->open.end(), u) != this->open.end()){
         u.key = calculateKey(u,km);
         m= findI(u);
         this->open[m] = u;
-    //u nao pertence a open
+    ///u nao pertence a open
     }else if(getG(u) != getRhs(u) ){
         if(std::find(this->open.begin(), this->open.end(), u) != this->open.end()){
 
@@ -716,7 +713,7 @@ void DStar::updateVertex(Node u, float km){
             u.key = calculateKey(u, km);
             this->open.push_back(u);
         }
-    //u pertence a open
+    ///u pertence a open
     }else if(getG(u) == getRhs(u)&& std::find(this->open.begin(), this->open.end(), u) != this->open.end()){
         m=findI(u);
         this->open.erase(this->open.begin()+m);
@@ -751,12 +748,9 @@ Node DStar::min_succ(Node u)
     float g1, dist;
     for(int i=0; i< this->listaAdj[u.id].size(); i++){
         s = this->listaAdj[u.id][i];
-    //    c = calculaDistancia(u.pontos, s.pontos) + s.g;
         dist = calculaDistancia(u, s);
         g1 = getG(s);
         c= dist + g1;
-       // c = calculaDistancia(u.pontos, s.pontos) + getG(s);
-
         if(c < custo_final){
             custo_final = c;
             final = s;
@@ -797,4 +791,18 @@ float DStar::getRhs(Node u){
     if(this->custo[u.id].estado==NULL){
         return calculaDistancia(u, s_end);
     }else return custo[u.id].rhs;
+}
+
+void DStar::updateCell(int x, int y, float val) {
+#ifdef DEBUG
+    std::cout  << "id:  " <<x <<" " <<y<< std::endl;
+#endif
+    this->custo[53].ocupado= true;
+    Node n;
+    n.pontos = custo[53].pontos;
+    n.id = 53;
+    n.ocupado = true;
+    updateVertex(n,0);
+    DStarLite();
+
 }

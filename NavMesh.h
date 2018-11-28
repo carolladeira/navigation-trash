@@ -25,8 +25,6 @@ class Map{
 public:
     float x;
     float y;
-    int id;
-
 
 };
 
@@ -44,9 +42,12 @@ public:
     Map start;
     Map end;
     Map atual;
+    float velocidade;
 
 
     Agente();
+    void move(Map posicao);
+    Map currentPosition();
 
 };
 

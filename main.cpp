@@ -6,7 +6,7 @@
 #include "Scene.h"
 #include "NavMesh.h"
 #include "DStar.h"
-
+#include <unistd.h>
 
 
 #define TAM_CENARIO 500
@@ -26,9 +26,11 @@ void reshape(int, int);
 void display(void);
 void idle ();
 void init();
+void mouse(int button, int state, int x, int y);
 
 int main(int argc, char** argv) {
    // std:: cout << "   "<<__cplusplus ;
+   // start = clock();
 
     srand (time(NULL));
     glutInit(&argc, argv);
@@ -41,8 +43,13 @@ int main(int argc, char** argv) {
     glutDisplayFunc(display); //quando um pixel na janela precisa ser atualizado
     glutIdleFunc(idle); //funcao de callback chamada quando nada esta acontecendo
     glutReshapeFunc(reshape); //chamado quando a janela 'e redimensionada
+  //  glutMotionFunc(mouseMotionFunc);
+    glutMouseFunc(mouse);
 
     init();
+
+
+
 
     glutMainLoop();
 
@@ -62,6 +69,7 @@ void reshape(int w, int h) {
 
 void display (void)
 {
+    usleep(2000);
     glClear (GL_COLOR_BUFFER_BIT);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -69,9 +77,10 @@ void display (void)
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
- //   navMesh->atualizaObstacles(obstaculos, num_paredes);
+
     scene->drawScene(navMesh, dstar, agente,num_paredes);
-    scene->drawMeshes(navMesh,num_paredes);
+
+
 
 
 #ifdef DEBUG
@@ -83,12 +92,15 @@ void display (void)
     glFlush ();
 }
 
+
 void idle()
 {
    // dstar->DStarLite(agente);
 
     navMesh->atualizaPosicao();
-   // scene->drawMeshes(navMesh,num_paredes);
+    scene->drawPathAtual(agente);
+   // scene->drawPathDStar(dstar);
+
 
     glutPostRedisplay();
 
@@ -98,15 +110,40 @@ void idle()
 void init()
 {
     glClearColor(1.0, 1.0, 1.0, 0.0);
-
     agente = new Agente();
     scene = new Scene();
     navMesh = new NavMesh(TAM_CENARIO);
     navMesh->criaObjetos(num_paredes, TAM_CENARIO);
     dstar = new DStar(navMesh, 50, agente);
-    dstar->DStarLite(agente);
+    dstar->DStarLite();
+  //  scene->drawScene(navMesh, dstar, agente,num_paredes);
+}
+void clickCell(int x, int y) {
 
 
-//    dstar->AStar();
+    dstar->updateCell(x, y, INT_MAX);
+
 
 }
+void mouse(int button, int state, int x, int y) {
+
+    if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN){
+        clickCell(x, y);
+    }
+
+
+}
+//void auxilia(){
+//
+//    while(agente->atual.x != agente->end.x){
+//        scene->drawPathAtual(agente);
+//        for(int i=0; i < dstar->closed.size(); i++){
+//            //agente.atual = closed[i].pontos;
+//            if(veSetaocupado(dstar->closed[i+1].id)){
+//                dstar->DStarLite();
+//            }
+//        }
+//
+//    }
+//
+//}

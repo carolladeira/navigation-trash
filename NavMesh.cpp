@@ -8,24 +8,32 @@
 #include <iostream>
 
 using namespace std;
-#define DEBUG
+//#define DEBUG
 
 
 //-------------------------Agente------------------------------------
 Agente::Agente() {
-    this->start.x =rand() % (int)500;
-    this->start.y =rand() % (int)500;
-
-    this->end.x = rand() % (int)500;
-    this->end.y = rand() % (int)500;
-
-//    this->start.x =15;
-//    this->start.y =15;
+//    this->start.x =rand() % (int)500;
+//    this->start.y =rand() % (int)500;
 //
-//    this->end.x = 5;
-//    this->end.y = 35;
+//    this->end.x = rand() % (int)500;
+//    this->end.y = rand() % (int)500;
+//
+    this->start.x =15;
+    this->start.y =15;
+
+    this->end.x = 115;
+    this->end.y = 210;
 
 
+}
+
+void Agente::move(Map posicao) {
+    this->atual = posicao;
+}
+
+Map Agente::currentPosition() {
+    return Map();
 }
 
 
@@ -243,6 +251,9 @@ void NavMesh::criaObjetos(int num_paredes, int tam_cenario) {
 }
 
 void NavMesh::atualizaPosicao() {
+
+    //formula = j* 50 + i ---- j: coluna horizontal, i: coluna vertical
+    //foruma inversa  =  id/ 50 = j (coluna horizontal), id%50 = i coluna vertical
     this->objects[0].pontos[0].x = this->objects[0].pontos[0].x + 0.101;		            this->objects[0].pontos[0].y = this->objects[0].pontos[0].y + 0.101;
     this->objects[0].pontos[1].x = this->objects[0].pontos[1].x + 0.101;                    this->objects[0].pontos[1].y = this->objects[0].pontos[1].y+ 0.101;
     this->objects[0].pontos[2].x = this->objects[0].pontos[2].x+ 0.101;	                this->objects[0].pontos[2].y = this->objects[0].pontos[2].y+ 0.101;

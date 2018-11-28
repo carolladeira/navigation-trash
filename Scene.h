@@ -23,6 +23,7 @@ public:
     void drawGraph(DStar *dStar);
     void drawPath(DStar *dStar);
     void drawPathDStar(DStar *dstar);
+    void drawPathAtual(Agente *agente);
 
 
 
