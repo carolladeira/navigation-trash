@@ -575,6 +575,7 @@ std::vector<Node> DStar::expand(Node current) {
 }
 
 void DStar:: DStarLite(Agente* agente, NavMesh *navMesh){
+
     closed.clear();
     int km=0;
     float c_old;
@@ -598,10 +599,11 @@ void DStar:: DStarLite(Agente* agente, NavMesh *navMesh){
     custo[s_end.id].rhs = 0;
     custo[s_end.id].estado=1;
     computeShortestPath(km);
+
     while(s_inicio.id != s_end.id){
        s_inicio = min_succ(s_inicio);
        this->closed.push_back(s_inicio);
-       agente->atualizaPosicao(s_inicio.pontos);
+      // agente->atualizaPosicao(s_inicio.pontos);
        ///VERIFICA CAMINHO
         atualizaCaminho(navMesh);
 
@@ -651,7 +653,6 @@ void DStar::atualizaCaminho(NavMesh *navMesh){
     }
 }
 
-
 void DStar::computeShortestPath(float km){
     Node u, s;
     int m;
@@ -673,7 +674,6 @@ void DStar::computeShortestPath(float km){
             for(int i = 0; i < listaAdj[u.id].size(); i++){
                 s = listaAdj[u.id][i];
                 if(s.id != s_end.id){
-                    //custo[u.id].g = calculaDistancia(u.pontos, s_end.pontos);
                     s.rhs = std::min(custo[s.id].rhs, calculaDistancia(s,u) + custo[u.id].g);
                     custo[s.id].rhs = std::min(custo[s.id].rhs, calculaDistancia(s,u) + custo[u.id].g);
                     custo[s.id].g = getG(s);
@@ -703,6 +703,7 @@ void DStar::computeShortestPath(float km){
 void DStar::updateVertex(Node u, float km){
     Pair key;
     int m;
+
     ///u pertence a open
     if(getG(u) != getRhs(u) && std::find(this->open.begin(), this->open.end(), u) != this->open.end()){
         u.key = calculateKey(u,km);
@@ -829,4 +830,10 @@ void DStar::criaObstaculos(){
 
     }
 
+}
+void DStar::updateStart(int x, int y){
+    s_start.pontos.x = x;
+    s_start.pontos.y = y;
+
+    s_start.key = calculateKey(s_start,0);
 }

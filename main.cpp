@@ -7,7 +7,7 @@
 #include "NavMesh.h"
 #include "DStar.h"
 #include <unistd.h>
-
+#include <list>
 
 #define TAM_CENARIO 500
 #define num_paredes 20
@@ -24,8 +24,8 @@ Agente *agente;
 Wall *objetos;
 NavMesh *navMesh;
 DStar *dstar;
-int i=0;
-
+bool autoreplan = true;
+int contador =0;
 
 void reshape(int, int);
 void display(void);
@@ -36,6 +36,8 @@ void mouse(int button, int state, int x, int y);
 ///funcoes auxiliares
 bool taOcupado(int id);
 void auxilia(int i);
+std::vector<Node> mypath;
+std::vector<Node>::iterator iter3;
 
 int main(int argc, char** argv) {
    // std:: cout << "   "<<__cplusplus ;
@@ -94,19 +96,30 @@ void display (void)
 void idle()
 {
     usleep(20000);
+    contador++;
 
-    for(int m=0; m <num_paredes; m++){
-        objetos[m].atualizaPosicao(TAM_CENARIO, num_paredes);
-        navMesh->removeGridObstaculos(objetos,m,num_paredes);
+    if(contador>=10){
+        mypath = dstar->closed;
+        iter3 = mypath.begin();
+        iter3++;
+        agente->atual = iter3->pontos;
+        dstar->updateStart(iter3->pontos.x, iter3->pontos.y);
+        contador=0;
     }
-    for(int m=0; m <num_paredes; m++){
-        navMesh->criaGridObstaculos(objetos,m,num_paredes);
-    }
-    for(int i =0; i <dstar->closed.size(); i++){
-        if (taOcupado(dstar->closed[i].id) == true) {
-                dstar->DStarLite(agente, navMesh);
-            }
-    }
+    if (autoreplan) dstar->DStarLite(agente,navMesh);
+
+//    for(int m=0; m <num_paredes; m++){
+//        objetos[m].atualizaPosicao(TAM_CENARIO, num_paredes);
+//        navMesh->removeGridObstaculos(objetos,m,num_paredes);
+//    }
+//    for(int m=0; m <num_paredes; m++){
+//        navMesh->criaGridObstaculos(objetos,m,num_paredes);
+//    }
+//    for(int i =0; i <dstar->closed.size(); i++){
+//        if (taOcupado(dstar->closed[i].id) == true) {
+//                dstar->DStarLite(agente, navMesh);
+//            }
+//    }
     glutPostRedisplay();
 
 }
@@ -128,7 +141,6 @@ void init()
     }
     dstar = new DStar(navMesh, 50, agente, objetos);
     dstar->DStarLite(agente, navMesh);
-    agente->atual = agente->start;
 }
 
 
