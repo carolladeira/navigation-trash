@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <GL/glut.h>
 
-//#define DEBUG
+#define DEBUG
 
 
 Node::Node() {
@@ -423,6 +423,10 @@ std::vector<Node> DStar::nosVizinhos(Node n, int tipo, int tamanho) {
 }
 
 std::vector<Node> DStar::AStar() {
+    open1.clear();
+    closed1.clear();
+    mapPath->clear();
+    totalPath.clear();
     Node node;
     node.g = 0;
     node.pontos = s_start.pontos;
@@ -575,6 +579,9 @@ std::vector<Node> DStar::expand(Node current) {
 }
 
 void DStar:: DStarLite(Agente* agente, NavMesh *navMesh){
+    if(s_start.id == s_end.id){
+        return;
+    }
 
     closed.clear();
     int km=0;
@@ -605,7 +612,7 @@ void DStar:: DStarLite(Agente* agente, NavMesh *navMesh){
        this->closed.push_back(s_inicio);
       // agente->atualizaPosicao(s_inicio.pontos);
        ///VERIFICA CAMINHO
-        atualizaCaminho(navMesh);
+       // atualizaCaminho(navMesh);
 
 #ifdef DEBUG
         std::cout  << "id:  " << s_inicio.id<< std::endl;
@@ -654,6 +661,9 @@ void DStar::atualizaCaminho(NavMesh *navMesh){
 }
 
 void DStar::computeShortestPath(float km){
+    if(this->s_start.id == this->s_end.id){
+        return;
+    }
     Node u, s;
     int m;
     float g_old;
@@ -762,7 +772,6 @@ Node DStar::min_succ(Node u)
     return final;
 }
 Node DStar::ordena(std::vector<Node> open) {
-
    //u < v if (u.first < v.first OR u.first == v.first AND u.second < v.second)
     sort(this->open.begin(), this->open.end(), [](const auto &u, const auto &v) {
          if (u.key.first < v.key.first || (u.key.first == v.key.first && u.key.second < v.key.second)){
@@ -831,9 +840,10 @@ void DStar::criaObstaculos(){
     }
 
 }
-void DStar::updateStart(int x, int y){
-    s_start.pontos.x = x;
-    s_start.pontos.y = y;
+void DStar::updateStart(Node novo){
+    s_start.pontos.x = novo.pontos.x;
+    s_start.pontos.y = novo.pontos.y;
+    s_start.id = novo.id;
 
     s_start.key = calculateKey(s_start,0);
 }

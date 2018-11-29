@@ -85,7 +85,7 @@ public:
     void updateCell(int x, int y, float val);
     void criaObstaculos();
     void atualizaCaminho(NavMesh *navMesh);
-    void updateStart(int x, int y);
+    void updateStart(Node novo);
 
 
 

@@ -38,6 +38,7 @@ bool taOcupado(int id);
 void auxilia(int i);
 std::vector<Node> mypath;
 std::vector<Node>::iterator iter3;
+Node novo;
 
 int main(int argc, char** argv) {
    // std:: cout << "   "<<__cplusplus ;
@@ -100,21 +101,43 @@ void idle()
 
     if(contador>=10){
         mypath = dstar->closed;
-        iter3 = mypath.begin();
-        iter3++;
-        agente->atual = iter3->pontos;
-        dstar->updateStart(iter3->pontos.x, iter3->pontos.y);
-        contador=0;
+        if(mypath[1].id != dstar->s_end.id){
+            novo = mypath[1];
+            if (taOcupado(novo.id) == true){
+                dstar->DStarLite(agente,navMesh);
+               // agente->atual = dstar->closed[1].pontos;
+            }else{
+                agente->atual =novo.pontos;
+                dstar->updateStart(novo);
+                contador=0;
+            }
+        }else{
+            agente->atual = dstar->s_end.pontos;
+            dstar->updateStart(dstar->s_end);
+        }
     }
     if (autoreplan) dstar->DStarLite(agente,navMesh);
+//
+//    if(contador>=10){
+//        mypath = dstar->totalPath;
+//        novo = mypath[1];
+//        agente->atual =novo.pontos;
+//#ifdef DEBUG
+// //       std::cout  << " ==  " << iter3->id;
+//#endif
+//        dstar->updateStart(novo);
+//        contador=0;
+//    }
+//    if (autoreplan == true) dstar->AStar();
 
-//    for(int m=0; m <num_paredes; m++){
-//        objetos[m].atualizaPosicao(TAM_CENARIO, num_paredes);
-//        navMesh->removeGridObstaculos(objetos,m,num_paredes);
-//    }
-//    for(int m=0; m <num_paredes; m++){
-//        navMesh->criaGridObstaculos(objetos,m,num_paredes);
-//    }
+    ///ATUALIZA POSICAO DOS OBSTACULOS E DA GRID OCUPADA
+    for(int m=0; m <num_paredes; m++){
+        objetos[m].atualizaPosicao(TAM_CENARIO, num_paredes);
+        navMesh->removeGridObstaculos(objetos,m,num_paredes);
+    }
+    for(int m=0; m <num_paredes; m++){
+        navMesh->criaGridObstaculos(objetos,m,num_paredes);
+    }
 //    for(int i =0; i <dstar->closed.size(); i++){
 //        if (taOcupado(dstar->closed[i].id) == true) {
 //                dstar->DStarLite(agente, navMesh);
@@ -140,6 +163,7 @@ void init()
 
     }
     dstar = new DStar(navMesh, 50, agente, objetos);
+    //dstar->AStar();
     dstar->DStarLite(agente, navMesh);
 }
 
