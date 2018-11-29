@@ -62,9 +62,10 @@ public:
 
 
     ///A Star
-    std::vector<Node> AStar();
+    std::vector<Node> AStar(NavMesh *navMesh);
     std::vector<Node> expand(Node current);
     std::vector<Node> reconstructPath(std::vector<Node> mathPath[], Node current);
+    float calculaDistanciaAStar(Node atual, Node destino, NavMesh *navMesh);
     float calculaDistancia(Node atual, Node destino);
     Node menorFScore(std::vector<Node> open);
     void imprimiPath();

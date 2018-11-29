@@ -422,7 +422,9 @@ std::vector<Node> DStar::nosVizinhos(Node n, int tipo, int tamanho) {
 
 }
 
-std::vector<Node> DStar::AStar() {
+std::vector<Node> DStar::AStar(NavMesh *navMesh) {
+     atualizaCaminho(navMesh);
+
     open1.clear();
     closed1.clear();
     mapPath->clear();
@@ -431,7 +433,7 @@ std::vector<Node> DStar::AStar() {
     node.g = 0;
     node.pontos = s_start.pontos;
     node.id = s_start.id;
-    node.f = calculaDistancia(s_start, s_end);
+    node.f = calculaDistanciaAStar(s_start, s_end, navMesh);
     open1.push_back(node);
 
     std::vector<Node> vizinhos;
@@ -462,7 +464,7 @@ std::vector<Node> DStar::AStar() {
             }
 
             // The distance from start to a neighbor
-            g = current.g + calculaDistancia(current, vizinhos[i]);
+            g = current.g + calculaDistanciaAStar(current, vizinhos[i], navMesh);
 
 
             // if neighbor not in openSet,  Discover a new node
@@ -472,7 +474,7 @@ std::vector<Node> DStar::AStar() {
                 }
             } else {
                 vizinhos[i].g = g;
-                vizinhos[i].h = calculaDistancia(vizinhos[i], s_end);
+                vizinhos[i].h = calculaDistanciaAStar(vizinhos[i], s_end, navMesh);
                 vizinhos[i].f = vizinhos[i].g + vizinhos[i].h;
                 open1.push_back(vizinhos[i]);
             }
@@ -482,7 +484,7 @@ std::vector<Node> DStar::AStar() {
             mapPath[vizinhos[i].id].push_back(current);
             //mapPath[vizinhos[i].id] = current;
             vizinhos[i].g = g;
-            vizinhos[i].h = calculaDistancia(vizinhos[i], s_end);
+            vizinhos[i].h = calculaDistanciaAStar(vizinhos[i], s_end, navMesh);
             vizinhos[i].f = vizinhos[i].g + vizinhos[i].h;
         }
     }
@@ -539,8 +541,27 @@ void DStar:: imprimiPath(){
     }
 }
 
-float DStar::calculaDistancia(Node atual, Node destino) {
+float DStar::calculaDistanciaAStar(Node atual, Node destino, NavMesh *navMesh) {
+    int j = atual.id/ 50;
+    int i = atual.id%50;
+    if(navMesh->_meshes[i][j]==1){
+        return INT_MAX;
+    }
+    if(custo[atual.id].ocupado == true || custo[destino.id].ocupado == true){
+        return INT_MAX;
+    }else{
+        float dx, dy;
+        dx = abs(atual.pontos.x - destino.pontos.x);
+        dy = abs(atual.pontos.y - destino.pontos.y);
 
+        float dist = sqrt(dx * dx + dy * dy);
+
+        return dist;
+    }
+
+
+}
+float DStar::calculaDistancia(Node atual, Node destino) {
     if(custo[atual.id].ocupado == true || custo[destino.id].ocupado == true){
         return INT_MAX;
     }else{

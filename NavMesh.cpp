@@ -18,6 +18,9 @@ Agente::Agente() {
 //
     this->end.x = rand() % (int)500;
     this->end.y = rand() % (int)500;
+
+    this->atual.x = this->start.x;
+    this->atual.y = this->start.y;
 //
 //    this->start.x =15;
 //    this->start.y =15;
