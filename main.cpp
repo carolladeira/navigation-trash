@@ -99,43 +99,50 @@ void idle()
     usleep(20000);
     contador++;
 
+    if(taOcupado(dstar->s_start.id) == true ){
+        std::cout  << "PARA TUDOOOOOOOOOOOOOOOOO "<< std::endl;
+    }
+
+    if(contador>=10){
+        mypath = dstar->closed;
+        if(mypath[1].id != dstar->s_end.id){
+            novo = mypath[1];
+            if (taOcupado(novo.id) == true){
+                dstar->DStarLite(agente,navMesh);
+               // agente->atual = dstar->closed[1].pontos;
+
+            }else{
+                agente->atual =novo.pontos;
+                dstar->updateStart(novo);
+            }
+        }else{
+            agente->atual = dstar->s_end.pontos;
+            dstar->updateStart(dstar->s_end);
+        }
+        std::cout  << "id:  " <<dstar->s_start.id<< std::endl;
+        contador=0;
+
+    }
+    if (autoreplan) dstar->DStarLite(agente,navMesh);
+//
 //    if(contador>=10){
-//        mypath = dstar->closed;
-//        if(mypath[1].id != dstar->s_end.id){
-//            novo = mypath[1];
-//            if (taOcupado(novo.id) == true){
-//                dstar->DStarLite(agente,navMesh);
-//               // agente->atual = dstar->closed[1].pontos;
-//            }else{
-//                agente->atual =novo.pontos;
+//        mypath = dstar->totalPath;
+//        int size =mypath.size();
+//        if(mypath[size-2].id!= dstar->s_end.id) {
+//            novo = mypath[size - 2];
+//            if (taOcupado(novo.id) == true) {
+//                dstar->updateStart(mypath[size-2]);
+//                dstar->AStar(navMesh);
+//                agente->atual = dstar->totalPath[size-2].pontos;
+//                contador = 0;
+//            } else {
 //                dstar->updateStart(novo);
-//                contador=0;
+//                dstar->AStar(navMesh);
+//                agente->atual = novo.pontos;
+//                contador = 0;
 //            }
-//        }else{
-//            agente->atual = dstar->s_end.pontos;
-//            dstar->updateStart(dstar->s_end);
 //        }
 //    }
-//    if (autoreplan) dstar->DStarLite(agente,navMesh);
-//
-    if(contador>=10){
-        mypath = dstar->totalPath;
-        int size =mypath.size();
-        if(mypath[size-2].id!= dstar->s_end.id) {
-            novo = mypath[size - 2];
-            if (taOcupado(novo.id) == true) {
-                dstar->updateStart(mypath[size-2]);
-                dstar->AStar(navMesh);
-                agente->atual = dstar->totalPath[size-2].pontos;
-                contador = 0;
-            } else {
-                dstar->updateStart(novo);
-                dstar->AStar(navMesh);
-                agente->atual = novo.pontos;
-                contador = 0;
-            }
-        }
-    }
     //if (autoreplan == true) dstar->AStar();
 
     ///ATUALIZA POSICAO DOS OBSTACULOS E DA GRID OCUPADA
@@ -146,6 +153,8 @@ void idle()
     for(int m=0; m <num_paredes; m++){
         navMesh->criaGridObstaculos(objetos,m,num_paredes);
     }
+    dstar->atualizaCaminho(navMesh);
+
 //    for(int i =0; i <dstar->closed.size(); i++){
 //        if (taOcupado(dstar->closed[i].id) == true) {
 //                dstar->DStarLite(agente, navMesh);
@@ -171,8 +180,8 @@ void init()
 
     }
     dstar = new DStar(navMesh, 50, agente, objetos);
-    dstar->AStar(navMesh);
-    //dstar->DStarLite(agente, navMesh);
+   // dstar->AStar(navMesh);
+    dstar->DStarLite(agente, navMesh);
 }
 
 

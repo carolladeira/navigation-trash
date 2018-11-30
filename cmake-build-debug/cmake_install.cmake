@@ -1,4 +1,4 @@
-# Install script for directory: /home/carol/Desktop/navigation-trash
+# Install script for directory: /home/carol/Desktop/final/navigation-trash
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/carol/Desktop/navigation-trash/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/carol/Desktop/final/navigation-trash/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

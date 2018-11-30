@@ -1,3 +1,3 @@
-/home/carol/Desktop/navigation-trash/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/carol/Desktop/navigation-trash/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/carol/Desktop/navigation-trash/cmake-build-debug/CMakeFiles/navigation_trash.dir
+/home/carol/Desktop/final/navigation-trash/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/carol/Desktop/final/navigation-trash/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/carol/Desktop/final/navigation-trash/cmake-build-debug/CMakeFiles/navigation_trash.dir

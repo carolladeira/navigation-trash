@@ -13,36 +13,18 @@
   <component name="ChangeListManager">
     <list default="true" id="f9f0c39e-7f45-4e1f-bede-803bdd4b7bc2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DStar.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/DStar.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DStar.h" beforeDir="false" afterPath="$PROJECT_DIR$/DStar.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NavMesh.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/NavMesh.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NavMesh.h" beforeDir="false" afterPath="$PROJECT_DIR$/NavMesh.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Scene.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.12.3/CMakeCCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.12.3/CMakeCCompiler.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.12.3/CMakeCXXCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.12.3/CMakeCXXCompiler.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.12.3/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.12.3/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.12.3/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.12.3/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.12.3/CompilerIdC/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.12.3/CompilerIdC/a.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.12.3/CompilerIdCXX/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.12.3/CompilerIdCXX/a.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/feature_tests.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/feature_tests.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/navigation_mesh.dir/CXX.includecache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/navigation_mesh.dir/DStar.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/navigation_mesh.dir/DependInfo.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/navigation_mesh.dir/NavMesh.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/navigation_mesh.dir/Scene.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/navigation_mesh.dir/build.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/navigation_mesh.dir/cmake_clean.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/navigation_mesh.dir/depend.internal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/navigation_mesh.dir/depend.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/navigation_mesh.dir/flags.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/navigation_mesh.dir/link.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/navigation_mesh.dir/main.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/navigation_mesh.dir/progress.make" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
@@ -367,6 +349,38 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="-115752700">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="cpp" value="2" />
+          <entry key="h" value="3" />
+          <entry key="txt" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CMakeLists.txt" value="1" />
+          <entry key="ObjectiveC" value="5" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="cpp" value="342" />
+          <entry key="h" value="18" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="ObjectiveC" value="360" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FavoritesManager">
     <favorites_list name="Navigation_Mesh" />
@@ -376,11 +390,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NavMesh.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
+            <state relative-caret-position="208">
+              <caret line="46" column="1" lean-forward="true" selection-start-line="46" selection-start-column="1" selection-end-line="46" selection-end-column="1" />
               <folding>
                 <element signature="e#53#73#0" expanded="true" />
-                <element signature="e#1199#3871#0" />
               </folding>
             </state>
           </provider>
@@ -389,8 +402,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NavMesh.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1200">
-              <caret line="80" column="2" selection-start-line="80" selection-start-column="2" selection-end-line="80" selection-end-column="2" />
+            <state relative-caret-position="198">
+              <caret line="43" column="21" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
               <folding>
                 <element signature="e#94#111#0" expanded="true" />
               </folding>
@@ -398,26 +411,26 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DStar.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1860">
-              <caret line="605" column="8" selection-start-line="605" selection-start-column="8" selection-end-line="605" selection-end-column="8" />
+            <state relative-caret-position="-213">
+              <caret line="641" selection-start-line="641" selection-start-column="2" selection-end-line="644" selection-end-column="10" />
               <folding>
-                <element signature="e#2610#2963#0" />
-                <element signature="e#2965#14180#0" />
-                <element signature="e#14182#16181#0" />
-                <element signature="e#16183#17292#0" />
-                <element signature="e#17294#17461#0" />
-                <element signature="e#17463#17841#0" />
-                <element signature="e#17843#18264#0" />
-                <element signature="e#18266#18411#0" />
-                <element signature="e#19252#19301#0" expanded="true" />
-                <element signature="e#20305#20569#0" />
-                <element signature="e#20572#22434#0" />
-                <element signature="e#24654#24797#0" />
-                <element signature="e#24798#24980#0" />
-                <element signature="e#25304#25746#0" />
+                <element signature="e#14180#16368#0" />
+                <element signature="e#16370#17479#0" />
+                <element signature="e#21334#23182#0" />
+                <element signature="e#23183#23929#0" />
+                <element signature="e#23930#24146#0" />
+                <element signature="e#24148#24306#0" />
+                <element signature="e#24307#24750#0" />
+                <element signature="e#24826#25458#0" />
+                <element signature="e#25233#25400#0" />
+                <element signature="e#25402#25545#0" />
+                <element signature="e#25546#25728#0" />
+                <element signature="e#25730#26050#0" />
+                <element signature="e#26052#26494#0" />
+                <element signature="e#26495#26678#0" />
               </folding>
             </state>
           </provider>
@@ -426,8 +439,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DStar.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="473">
-              <caret line="87" column="35" selection-start-line="87" selection-start-column="35" selection-end-line="87" selection-end-column="35" />
+            <state relative-caret-position="399">
+              <caret line="89" column="43" selection-start-line="89" selection-start-column="43" selection-end-line="89" selection-end-column="43" />
               <folding>
                 <element signature="e#103#123#0" expanded="true" />
               </folding>
@@ -436,21 +449,9 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Scene.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="19" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="19" />
-              <folding>
-                <element signature="e#39#59#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scene.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
+            <state relative-caret-position="225">
               <caret line="16" selection-start-line="16" selection-end-line="16" />
             </state>
           </provider>
@@ -459,15 +460,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="124" selection-start-line="124" selection-end-line="124" />
+            <state relative-caret-position="431">
+              <caret line="123" lean-forward="true" selection-start-line="123" selection-end-line="123" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
-                <element signature="e#1432#1677#0" />
-                <element signature="e#1679#2050#0" />
-                <element signature="e#3159#3233#0" />
-                <element signature="e#3234#3377#0" />
-                <element signature="e#3378#3679#0" />
               </folding>
             </state>
           </provider>
@@ -476,8 +472,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+            <state relative-caret-position="45">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="5" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Scene.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+              <folding>
+                <element signature="e#39#59#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -498,13 +506,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Scene.h" />
-        <option value="$PROJECT_DIR$/NavMesh.h" />
-        <option value="$PROJECT_DIR$/NavMesh.cpp" />
-        <option value="$PROJECT_DIR$/Scene.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/NavMesh.cpp" />
+        <option value="$PROJECT_DIR$/NavMesh.h" />
         <option value="$PROJECT_DIR$/DStar.h" />
-        <option value="$PROJECT_DIR$/DStar.cpp" />
         <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/DStar.cpp" />
+        <option value="$PROJECT_DIR$/Scene.cpp" />
       </list>
     </option>
   </component>
@@ -515,10 +523,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="67" />
+  <component name="ProjectFrameBounds" extendedState="4">
+    <option name="x" value="849" />
     <option name="y" value="25" />
-    <option name="width" value="927" />
+    <option name="width" value="1071" />
     <option name="height" value="1055" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -540,7 +548,20 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Navigation_Mesh" type="b2602c69:ProjectViewProjectNode" />
+              <item name="navigation-trash" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -621,6 +642,7 @@
       <workItem from="1543441402979" duration="6102000" />
       <workItem from="1543451960867" duration="2534000" />
       <workItem from="1543493568332" duration="3801000" />
+      <workItem from="1543538017725" duration="11951000" />
     </task>
     <task id="LOCAL-00001" summary="Gerando lista de adjacentes correta">
       <created>1542985941656</created>
@@ -647,7 +669,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="226611000" />
+    <option name="totallyTimeSpent" value="238562000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -659,16 +681,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
+    <frame x="849" y="25" width="1071" height="1055" extended-state="4" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6754658" weight="0.55959135" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6754658" visible="true" weight="0.089756094" />
       <window_info id="Structure" order="1" sideWeight="0.32453415" side_tool="true" weight="0.19336385" />
       <window_info id="Favorites" order="2" sideWeight="0.32360741" side_tool="true" weight="0.13118617" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.48311076" visible="true" weight="0.15567568" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49960724" weight="0.0" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.48311076" visible="true" weight="0.40972972" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49960724" weight="0.4281081" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49803615" weight="0.32540542" />
@@ -677,7 +699,7 @@
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5003928" side_tool="true" weight="0.39751554" />
       <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="CMake" order="11" sideWeight="0.4972506" weight="0.34054053" />
-      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.60251373" weight="0.6335135" />
+      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.60251373" weight="0.29837838" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -719,21 +741,18 @@
     <option name="LAST_COMMIT_MESSAGE" value="DStar Lite implementado - sem evitar obstaculos" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>101</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
         <watch expression="dstar-&gt;closed" />
         <watch expression="i" />
         <watch expression="dstar-&gt;closed[i].id" />
         <watch expression="dstar-&gt;closed" />
+        <watch expression="open" />
+        <watch expression="u" />
+        <watch expression="this-&gt;open.begin()" />
+        <watch expression="this-&gt;open" />
+        <watch expression="this-&gt;open.begin()" />
+        <watch expression="u.key.first " />
       </configuration>
     </watches-manager>
   </component>
@@ -783,7 +802,6 @@
     <entry file="file:///usr/include/c++/5/bits/stl_algo.h" />
     <entry file="file:///usr/include/c++/5/bits/stl_iterator.h" />
     <entry file="file:///usr/include/c++/5/ext/new_allocator.h" />
-    <entry file="file:///usr/include/c++/7/bits/stl_algo.h" />
     <entry file="file:///usr/include/c++/7/bits/move.h" />
     <entry file="file:///usr/include/c++/7/bits/stl_algobase.h" />
     <entry file="file:///usr/include/c++/7/cmath" />
@@ -797,55 +815,34 @@
     </entry>
     <entry file="file:///usr/include/c++/7/bits/std_abs.h" />
     <entry file="file:///usr/include/c++/5/bits/stl_vector.h" />
-    <entry file="file://$PROJECT_DIR$/NavMesh.cpp">
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-          <folding>
-            <element signature="e#53#73#0" expanded="true" />
-            <element signature="e#1199#3871#0" />
-          </folding>
+        <state relative-caret-position="45">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="5" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/c++/7/bits/stl_algo.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="1965" column="18" selection-start-line="1965" selection-start-column="18" selection-end-line="1965" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/NavMesh.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1200">
-          <caret line="80" column="2" selection-start-line="80" selection-start-column="2" selection-end-line="80" selection-end-column="2" />
+        <state relative-caret-position="198">
+          <caret line="43" column="21" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
           <folding>
             <element signature="e#94#111#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scene.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="19" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="19" />
-          <folding>
-            <element signature="e#39#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scene.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DStar.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
-          <caret line="87" column="35" selection-start-line="87" selection-start-column="35" selection-end-line="87" selection-end-column="35" />
+        <state relative-caret-position="399">
+          <caret line="89" column="43" selection-start-line="89" selection-start-column="43" selection-end-line="89" selection-end-column="43" />
           <folding>
             <element signature="e#103#123#0" expanded="true" />
           </folding>
@@ -854,38 +851,60 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="124" selection-start-line="124" selection-end-line="124" />
+        <state relative-caret-position="431">
+          <caret line="123" lean-forward="true" selection-start-line="123" selection-end-line="123" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
-            <element signature="e#1432#1677#0" />
-            <element signature="e#1679#2050#0" />
-            <element signature="e#3159#3233#0" />
-            <element signature="e#3234#3377#0" />
-            <element signature="e#3378#3679#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scene.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NavMesh.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="46" column="1" lean-forward="true" selection-start-line="46" selection-start-column="1" selection-end-line="46" selection-end-column="1" />
+          <folding>
+            <element signature="e#53#73#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DStar.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1860">
-          <caret line="605" column="8" selection-start-line="605" selection-start-column="8" selection-end-line="605" selection-end-column="8" />
+        <state relative-caret-position="-213">
+          <caret line="641" selection-start-line="641" selection-start-column="2" selection-end-line="644" selection-end-column="10" />
           <folding>
-            <element signature="e#2610#2963#0" />
-            <element signature="e#2965#14180#0" />
-            <element signature="e#14182#16181#0" />
-            <element signature="e#16183#17292#0" />
-            <element signature="e#17294#17461#0" />
-            <element signature="e#17463#17841#0" />
-            <element signature="e#17843#18264#0" />
-            <element signature="e#18266#18411#0" />
-            <element signature="e#19252#19301#0" expanded="true" />
-            <element signature="e#20305#20569#0" />
-            <element signature="e#20572#22434#0" />
-            <element signature="e#24654#24797#0" />
-            <element signature="e#24798#24980#0" />
-            <element signature="e#25304#25746#0" />
+            <element signature="e#14180#16368#0" />
+            <element signature="e#16370#17479#0" />
+            <element signature="e#21334#23182#0" />
+            <element signature="e#23183#23929#0" />
+            <element signature="e#23930#24146#0" />
+            <element signature="e#24148#24306#0" />
+            <element signature="e#24307#24750#0" />
+            <element signature="e#24826#25458#0" />
+            <element signature="e#25233#25400#0" />
+            <element signature="e#25402#25545#0" />
+            <element signature="e#25546#25728#0" />
+            <element signature="e#25730#26050#0" />
+            <element signature="e#26052#26494#0" />
+            <element signature="e#26495#26678#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scene.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+          <folding>
+            <element signature="e#39#59#0" expanded="true" />
           </folding>
         </state>
       </provider>

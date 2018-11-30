@@ -87,6 +87,7 @@ public:
     void criaObstaculos();
     void atualizaCaminho(NavMesh *navMesh);
     void updateStart(Node novo);
+    bool taOcupado(NavMesh *navMesh, int id);
 
 
 

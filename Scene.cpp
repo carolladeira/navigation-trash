@@ -11,7 +11,7 @@
 using namespace std;
 
 void Scene::drawScene(NavMesh *navMesh, DStar *dstar,Wall* objetos, Agente * agente, int nWall ) {
-    // this->drawGraph(dstar);
+  //  this->drawGraph(dstar);
     this->drawAgent(agente);
     this->drawObstacles(navMesh,objetos, nWall);
     this->drawMeshes(navMesh, nWall);
@@ -23,7 +23,7 @@ void Scene::drawScene(NavMesh *navMesh, DStar *dstar,Wall* objetos, Agente * age
 }
 
 void Scene::drawPathAtual(Agente *agente){
-    glPointSize((GLfloat)15.0f);
+    glPointSize((GLfloat)5.0f);
     glColor3f(1.0,0.0,0.0); //red
     glBegin(GL_POINTS);
         glVertex2f(agente->atual.x, agente->atual.y);
@@ -43,6 +43,11 @@ void Scene::drawAgent(Agente *agente) {
     glColor3f(0.0,1.0,0.0); // green
     glBegin(GL_POINTS);
         glVertex2f(agente->end.x, agente->end.y);
+    glEnd();
+
+    glColor3f(0.0,1.0,1.0); // green
+    glBegin(GL_POINTS);
+    glVertex2f(agente->teste.x, agente->teste.y);
     glEnd();
 
 
@@ -96,14 +101,15 @@ void Scene::drawMeshes(NavMesh *navMesh, int nWall) {
             y=j*10;
             if(navMesh->_meshes[i][j]==1){
                 glColor3f (1.0, 0.0, 0.0);
-            }else  glColor3f (0.2, 0.5, 0.0);
+                glBegin(GL_LINE_LOOP);
+                glVertex2f (x, y);
+                glVertex2f (x +10, y);
+                glVertex2f (x+10, y+10);
+                glVertex2f (x,y+10 );
+                glEnd();
+            }//else  glColor3f (0.2, 0.5, 0.0);
 
-            glBegin(GL_LINE_LOOP);
-            glVertex2f (x, y);
-            glVertex2f (x +10, y);
-            glVertex2f (x+10, y+10);
-            glVertex2f (x,y+10 );
-            glEnd();
+
 
         }
     }

@@ -41,7 +41,7 @@ class Agente {
 public:
     Map start;
     Map end;
-    Map atual;
+    Map atual, teste;
     float velocidade;
 
 

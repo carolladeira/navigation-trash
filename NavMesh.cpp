@@ -13,20 +13,22 @@ using namespace std;
 
 //-------------------------Agente------------------------------------
 Agente::Agente() {
-    this->start.x =rand() % (int)500;
-    this->start.y =rand() % (int)500;
+//    this->start.x =rand() % (int)500;
+//    this->start.y =rand() % (int)500;
+////
+//    this->end.x = rand() % (int)500;
+//    this->end.y = rand() % (int)500;
+
+
 //
-    this->end.x = rand() % (int)500;
-    this->end.y = rand() % (int)500;
+    this->start.x =415;
+    this->start.y =45;
+
+    this->end.x = 35;
+    this->end.y = 425;
 
     this->atual.x = this->start.x;
     this->atual.y = this->start.y;
-//
-//    this->start.x =15;
-//    this->start.y =15;
-
-//    this->end.x = 115;
-//    this->end.y = 210;
 
 
 }
@@ -40,7 +42,7 @@ Map Agente::currentPosition() {
 }
 
 void Agente::atualizaPosicao(Map atual) {
-    this->atual = atual;
+    this->teste = atual;
 
 }
 

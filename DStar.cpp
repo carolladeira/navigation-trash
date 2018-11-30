@@ -603,6 +603,12 @@ void DStar:: DStarLite(Agente* agente, NavMesh *navMesh){
     if(s_start.id == s_end.id){
         return;
     }
+    int teste = s_start.id;
+
+    if(taOcupado(navMesh, teste)==true){
+        std::cout  << "uhulllllllllllllllllllllllllTUDOOOOOOOOOOOOOOOOO "<< std::endl;
+
+    }
 
     closed.clear();
     int km=0;
@@ -631,12 +637,17 @@ void DStar:: DStarLite(Agente* agente, NavMesh *navMesh){
     while(s_inicio.id != s_end.id){
        s_inicio = min_succ(s_inicio);
        this->closed.push_back(s_inicio);
-      // agente->atualizaPosicao(s_inicio.pontos);
+       agente->atualizaPosicao(s_inicio.pontos);
+       int teste = s_start.id;
+//      if(taOcupado(navMesh, teste)==true){
+//           std::cout  << "uhulllllllllllllllllllllllllTUDOOOOOOOOOOOOOOOOO "<< std::endl;
+//
+//       }
        ///VERIFICA CAMINHO
-       // atualizaCaminho(navMesh);
+       atualizaCaminho(navMesh);
 
 #ifdef DEBUG
-        std::cout  << "id:  " << s_inicio.id<< std::endl;
+        //std::cout  << "id:  " << s_inicio.id<< std::endl;
 #endif
        km = km + calculaDistancia(s_last,s_inicio);
        s_last = s_inicio;
@@ -673,8 +684,12 @@ void DStar::atualizaCaminho(NavMesh *navMesh){
     int m=0;
     for(int i=0; i <50; i++){
         for(int j=0; j<50; j++){
-            if(navMesh->_meshes[i][j]==true){
+            if(navMesh->_meshes[i][j]==1){
                 this->custo[m].ocupado = true;
+            }
+            else{
+                this->custo[m].ocupado = false;
+
             }
             m++;
         }
@@ -795,9 +810,13 @@ Node DStar::min_succ(Node u)
 Node DStar::ordena(std::vector<Node> open) {
    //u < v if (u.first < v.first OR u.first == v.first AND u.second < v.second)
     sort(this->open.begin(), this->open.end(), [](const auto &u, const auto &v) {
-         if (u.key.first < v.key.first || (u.key.first == v.key.first && u.key.second < v.key.second)){
+   //  int size = this->open.size();
+   //std::sort(this->open[0], this->open[size-1], [](const auto &u, const auto &v) {
+        if (u.key.first < v.key.first || (u.key.first == v.key.first && u.key.second < v.key.second)){
              return true;
-         }
+         } else {
+            return false;
+        }
     });
     for (std::vector<Node>::iterator it = this->open.begin(); it != this->open.end(); ++it)
 
@@ -867,4 +886,12 @@ void DStar::updateStart(Node novo){
     s_start.id = novo.id;
 
     s_start.key = calculateKey(s_start,0);
+}
+
+bool DStar::taOcupado(NavMesh *navMesh, int id){
+    int j = id/50;
+    int i = id%50;
+    if(navMesh->_meshes[i][j]==1){
+        return true;
+    }return false;
 }
